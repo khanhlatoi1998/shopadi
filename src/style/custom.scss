@@ -1,0 +1,99 @@
+%default_swiper_btn {
+  width: 50px !important;
+  height: 50px !important;
+  margin-top: 0 !important;
+  background: #00000040 !important;
+  border-radius: 50%;
+  transition-duration: 300ms;
+  opacity: 0 !important;
+}
+
+%products_swiper_btn {
+  width: 40px !important;
+  height: 40px !important;
+  margin-top: 0 !important;
+  background: #00000090 !important;
+  border-radius: 50%;
+  transition-duration: 300ms;
+  opacity: 0 !important;
+}
+
+.banner {
+  .swiper-button-prev {
+    @extend %default_swiper_btn;
+    top: 50% !important;
+    left: 0 !important;
+    right: auto;
+
+    transform: translate(-150%, -50%);
+
+    &::after {
+      font-size: 15px !important;
+      color: white;
+    }
+  }
+
+  .swiper-button-next {
+    @extend %default_swiper_btn;
+    top: 50% !important;
+    right: 0 !important;
+    left: auto !important;
+    transform: translate(150%, -50%);
+
+    &::after {
+      font-size: 15px !important;
+      color: white;
+    }
+  }
+
+  .swiper:hover {
+    .swiper-button-prev {
+      transform: translate(30%, -50%);
+      opacity: 100 !important;
+    }
+    .swiper-button-next {
+      transform: translate(-30%, -50%);
+      opacity: 100 !important;
+    }
+  }
+}
+
+.products, .latest {
+  .swiper-button-prev {
+    @extend %products_swiper_btn;
+    top: 50% !important;
+    left: 0 !important;
+    right: auto;
+
+    transform: translate(-150%, -50%);
+
+    &::after {
+      font-size: 15px !important;
+      color: white;
+    }
+  }
+
+  .swiper-button-next {
+    @extend %products_swiper_btn;
+    top: 50% !important;
+    right: 0 !important;
+    left: auto !important;
+    transform: translate(150%, -50%);
+
+    &::after {
+      font-size: 15px !important;
+      color: white;
+    }
+  }
+
+  .swiper:hover {
+    .swiper-button-prev {
+      transform: translate(30%, -50%);
+      opacity: 100 !important;
+    }
+    .swiper-button-next {
+      transform: translate(-30%, -50%);
+      opacity: 100 !important;
+    }
+  }
+}
