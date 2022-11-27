@@ -58,7 +58,7 @@
   }
 }
 
-.products, .latest {
+.products, .latest, .post {
   .swiper-button-prev {
     @extend %products_swiper_btn;
     top: 50% !important;
@@ -97,3 +97,14 @@
     }
   }
 }
+
+// .customer {
+//   .swiper-pagination-bullet {
+//     background-color: black !important;
+//     width: 12px !important;
+//     height: 12px !important;
+//   }
+//   .swiper-pagination-bullet-active {
+//     background-color: #0E5B9D !important;
+//   }
+// }

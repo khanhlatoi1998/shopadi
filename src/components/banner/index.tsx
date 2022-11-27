@@ -16,14 +16,18 @@ const Banner = () => {
                 autoplay={{
                     delay: 3000
                 }}
+                pagination={{
+                    clickable: true,
+                    enabled: false
+                }}
                 breakpoints={{
                     500: {
                         slidesPerView: 1,
                         slidesPerGroup: 1,
                     },
                 }}
-                modules={[Navigation, Autoplay]}
-                className="mySwiper cursor-pointer"
+                modules={[Navigation, Autoplay, Pagination]}
+                className="cursor-pointer"
             >
                 <SwiperSlide>
                     <div className="block relative pt-[33.9%]">
