@@ -1,22 +1,78 @@
 import NavItem from "./NavItem";
 import { ItemType } from '../../contains/type/index';
 
-interface Item {
-    link: string;
-    label: string;
-    active?: boolean;
-}
-
 const Header = () => {
 
-    const items: Array<Item> = [
-        { link: '/', label: 'HOME', active: true },
-        { link: '/', label: 'MEN', active: false },
-        { link: '/', label: 'WOMENS', active: false },
-        { link: '/', label: 'SHOP', active: false },
-        { link: '/', label: 'OFFICE WEAR', active: false },
-        { link: '/', label: 'PRODUCTS', active: false },
-        { link: '/', label: 'BLOGS', active: false },
+    const items: Array<ItemType> = [
+        {
+            link: '/',
+            label: 'HOME',
+            active: true,
+        },
+        {
+            link: '/',
+            label: 'MEN',
+            active: false,
+            subMenu: [
+                { link: '/', label: 'Hoodile' },
+                { link: '/', label: 'Hoodile' },
+            ]
+        },
+        {
+            link: '/',
+            label: 'WOMENS',
+            active: false,
+            subMenu: [
+                // {
+                //     link: '/',
+                //     label: 'Modest fashion',
+                //     childSubMenu: [
+                //         { link: '/', label: 'Baby Suit' },
+                //         { link: '/', label: 'Baby Suit' },
+                //         { link: '/', label: 'Baby Suit' },
+                //         { link: '/', label: 'Baby Suit' },
+                //     ],
+                //     icon: 'fa fa-angle-right'
+                // },
+                { link: '/', label: 'Preppy style' },
+                { link: '/', label: 'Office'},
+            ]
+        },
+        {
+            link: '/',
+            label: 'SHOP',
+            active: false,
+            subMenu: [
+                // {
+                //     link: '/',
+                //     label: 'Modest fashion',
+                //     childSubMenu: [
+                //         { link: '/', label: 'Baby Suit' },
+                //         { link: '/', label: 'Baby Suit' },
+                //         { link: '/', label: 'Baby Suit' },
+                //         { link: '/', label: 'Baby Suit' },
+                //     ],
+                //     icon: 'fa fa-angle-right'
+                // },
+                { link: '/', label: 'Preppy style' },
+                { link: '/', label: 'Office'},
+            ]
+        },
+        {
+            link: '/',
+            label: 'OFFICE WEAR',
+            active: false
+        },
+        {
+            link: '/',
+            label: 'PRODUCTS',
+            active: false
+        },
+        {
+            link: '/',
+            label: 'BLOGS',
+            active: false
+        },
     ]
 
 
@@ -51,7 +107,7 @@ const Header = () => {
                 </nav>
             </div>
             <header>
-                <div className="px-8 py-6 flex items-center justify-between">
+                <div className="px-8 flex items-center justify-between">
                     <div>
                         <a href="/">
                             <img src="../images/logo.png" alt="" />

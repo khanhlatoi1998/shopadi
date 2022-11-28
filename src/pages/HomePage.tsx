@@ -11,7 +11,6 @@ import ListProducts from "../components/products/ListProducts";
 const HomePage = () => {
     return (
         <section>
-            <Header />
             <Banner />
             <Brand />
             <ListProducts />

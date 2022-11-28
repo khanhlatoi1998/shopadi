@@ -17,11 +17,17 @@ module.exports = {
         color_12: '#acacac'
       },
 
+      boxShadow: {
+        'subMenu': '0 0 5px 1px rgb(0 0 0 / 8%);'
+      },
+
       fontSize: {
         'title': '30px',
         'price': '17px'
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-scoped-groups"),
+  ],
 }
