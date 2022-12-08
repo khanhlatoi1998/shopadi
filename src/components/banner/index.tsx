@@ -8,7 +8,7 @@ import { Navigation, Pagination, Autoplay } from "swiper";
 
 const Banner = () => {
     return (
-        <section className="banner">
+        <section className="banner mt-[76px] lg:mt-0">
             <Swiper
                 slidesPerView={1}
                 slidesPerGroup={1}

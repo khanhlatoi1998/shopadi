@@ -22,6 +22,7 @@ module.exports = {
       },
 
       fontSize: {
+        'size-1': '17px',
         'title': '30px',
         'title_mb': '25px',
         'price': '17px'
@@ -30,5 +31,6 @@ module.exports = {
   },
   plugins: [
     require("tailwindcss-scoped-groups"),
+    require("tailwindcss-labeled-groups")(["headerItem", "1"])
   ],
 }

@@ -15,6 +15,7 @@ const Header = () => {
             link: '/',
             label: 'MEN',
             active: false,
+            icon: <i className="fa-regular fa-plus"></i>,
             subMenu: [
                 { link: '/', label: 'Hoodile' },
                 { link: '/', label: 'Hoodile' },
@@ -24,18 +25,8 @@ const Header = () => {
             link: '/',
             label: 'WOMENS',
             active: false,
+            icon:  <i className="fa-regular fa-plus"></i>,
             subMenu: [
-                // {
-                //     link: '/',
-                //     label: 'Modest fashion',
-                //     childSubMenu: [
-                //         { link: '/', label: 'Baby Suit' },
-                //         { link: '/', label: 'Baby Suit' },
-                //         { link: '/', label: 'Baby Suit' },
-                //         { link: '/', label: 'Baby Suit' },
-                //     ],
-                //     icon: 'fa fa-angle-right'
-                // },
                 { link: '/', label: 'Preppy style' },
                 { link: '/', label: 'Office'},
             ]
@@ -44,18 +35,8 @@ const Header = () => {
             link: '/',
             label: 'SHOP',
             active: false,
+            icon:  <i className="fa-regular fa-plus"></i>,
             subMenu: [
-                // {
-                //     link: '/',
-                //     label: 'Modest fashion',
-                //     childSubMenu: [
-                //         { link: '/', label: 'Baby Suit' },
-                //         { link: '/', label: 'Baby Suit' },
-                //         { link: '/', label: 'Baby Suit' },
-                //         { link: '/', label: 'Baby Suit' },
-                //     ],
-                //     icon: 'fa fa-angle-right'
-                // },
                 { link: '/', label: 'Preppy style' },
                 { link: '/', label: 'Office'},
             ]
@@ -108,7 +89,7 @@ const Header = () => {
                     </ul>
                 </nav>
             </div>
-            <header>
+            <header className="fixed lg:static  top-0 inset-x-0 z-50 bg-white">
                 <div className="relative px-8 flex items-center justify-between">
                     <div className="py-4">
                         <a href="/">
