@@ -23,6 +23,7 @@ module.exports = {
 
       fontSize: {
         'title': '30px',
+        'title_mb': '25px',
         'price': '17px'
       }
     },

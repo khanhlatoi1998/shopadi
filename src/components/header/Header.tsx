@@ -1,7 +1,9 @@
 import NavItem from "./NavItem";
 import { ItemType } from '../../contains/type/index';
+import { useState } from "react";
 
 const Header = () => {
+    const [open, setOpen] = useState<boolean>(false);
 
     const items: Array<ItemType> = [
         {
@@ -107,19 +109,19 @@ const Header = () => {
                 </nav>
             </div>
             <header>
-                <div className="px-8 flex items-center justify-between">
-                    <div>
+                <div className="relative px-8 flex items-center justify-between">
+                    <div className="py-4">
                         <a href="/">
                             <img src="../images/logo.png" alt="" />
                         </a>
                     </div>
                     <div>
                         <nav>
-                            <ul className="flex items-center justify-center">
+                            <ul className={`${open ? 'absolute top-[100%] left-0 right-0 bg-white z-10 h-auto' : 'hidden lg:flex'} duration-500 absolute lg:relative flex flex-col lg:flex-row lg:items-center lg:justify-center lg:border-0 border-b border-solid border-color_07 lg:shadow-none shadow-md`}>
                                 {
                                     items.map((item, index) => {
                                         return (
-                                            <NavItem key={index} item={item} />
+                                            <NavItem key={index} item={item}/>
                                         )
                                     })
                                 }
@@ -128,6 +130,11 @@ const Header = () => {
                     </div>
                     <div>
                         <ul className="flex items-center justify-center gap-4 text-[20px]">
+                            <li className="lg:hidden block">
+                                <button onClick={() => setOpen(!open)}className="p-2">
+                                    <i className="ti-menu"></i>
+                                </button>
+                            </li>
                             <li>
                                 <a href="">
                                     <i className="ti-search"></i>

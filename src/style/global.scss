@@ -25,12 +25,19 @@ button, input {
   border: 0;
 }
 
+
 .container__main {
   max-width: 1200px;
   padding-left: 30px;
   padding-right: 30px;
   margin: 0 auto;
+  @media screen {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
+
+
 
 %defaullt_brand_item {
   content: "";

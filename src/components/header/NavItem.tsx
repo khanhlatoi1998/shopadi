@@ -11,7 +11,7 @@ const NavItem: React.FC<Props> = (props) => {
 
     return (
         <li className="relative group cursor-pointer">
-            <a className={`${active ? 'text-color_01' : ''} p-4 py-8 block font-medium hover:text-color_01`} href={link}>
+            <a className={`${active ? 'text-color_01' : ''} px-4 py-2 lg:py-8 lg:border-0 border-t border-solid border-color_07 block font-medium hover:text-color_01`} href={link}>
                 {label}
             </a>
             {

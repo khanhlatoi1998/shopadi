@@ -10,9 +10,9 @@ const ListPost = () => {
     return (
         <section className="post py-16">
             <div className="container__main">
-                <h1 className="font-bold text-title text-center">LATEST POST</h1>
+                <h1 className="font-bold md:text-title text-title_mb text-center">LATEST POST</h1>
                 <Swiper
-                    slidesPerView={3}
+                    slidesPerView={1}
                     slidesPerGroup={1}
                     spaceBetween={30}
                     navigation={true}
@@ -24,10 +24,13 @@ const ListPost = () => {
                         enabled: false
                     }}
                     breakpoints={{
-                        500: {
-                            // slidesPerView: 1,
+                        640: {
+                            slidesPerView: 2,
                             // slidesPerGroup: 1,
                         },
+                        1040: {
+                            slidesPerView: 3
+                        }
                     }}
                     modules={[Navigation, Autoplay, Pagination]}
                     className="cursor-pointer"

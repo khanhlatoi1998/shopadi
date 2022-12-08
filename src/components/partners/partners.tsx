@@ -3,16 +3,30 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const Partners = () => {
     return (
-        <section className="partners py-20 bg-color_05">
+        <section className="partners md:py-20 py-12 bg-color_05">
             <div className="container__main px-4">
-                <h1 className="font-bold text-title text-center">OUR PARTNERS</h1>
+                <h1 className="font-bold md:text-title text-title_mb text-center">OUR PARTNERS</h1>
                 <div className="mt-4">
                     <Swiper
-                        slidesPerView={6}
-                        slidesPerGroup={1}
+                        slidesPerView={4}
+                        spaceBetween={30}
                         autoplay={{
                             delay: 5000
                         }}
+                        breakpoints={{
+                            640: {
+                              slidesPerView: 4,
+                              spaceBetween: 20,
+                            },
+                            768: {
+                              slidesPerView: 4,
+                              spaceBetween: 40,
+                            },
+                            1024: {
+                              slidesPerView: 6,
+                              spaceBetween: 50,
+                            },
+                          }}
                         modules={[Autoplay]}
                     >
                         <SwiperSlide>

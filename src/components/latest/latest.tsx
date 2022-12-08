@@ -7,11 +7,11 @@ import Product from "../products/Product";
 const Latest = () => {
     return (
         <section className="latest">
-            <div className="container__main px-8 py-20">
-                <h1 className="font-bold text-title text-center">LATEST</h1>
+            <div className="container__main px-8 md:py-20 py-12">
+                <h1 className="font-bold md:text-title text-title_mb text-center">LATEST</h1>
                 <div className="mt-8">
                     <Swiper
-                        slidesPerView={4}
+                        slidesPerView={1}
                         spaceBetween={30}
                         slidesPerGroup={1}
                         loop={true}
@@ -24,13 +24,37 @@ const Latest = () => {
                             enabled: false
                         }}
                         breakpoints={{
-                            500: {
-
+                            480: {
+                                slidesPerView: 2,
                             },
+                            767: {
+                                slidesPerView: 3,
+                            },
+                            1200: {
+                                slidesPerView: 4
+                            } 
                         }}
                         modules={[Pagination, Navigation, Autoplay]}
                         className="mySwiper"
                     >
+                        <SwiperSlide>
+                            <Product />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Product />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Product />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Product />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Product />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Product />
+                        </SwiperSlide>
                         <SwiperSlide>
                             <Product />
                         </SwiperSlide>

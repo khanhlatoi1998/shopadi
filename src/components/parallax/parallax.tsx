@@ -1,8 +1,8 @@
 const Parallax = () => {
     return (
-        <section className="min-h-[500px] py-20 bg-[url('../public/images/products/parallax.jpg')] bg-no-repeat">
+        <section className="min-h-[500px] lg:py-20 py-12 bg-[url('../public/images/products/parallax.jpg')] bg-no-repeat">
             <div className="container__main flex justify-end">
-                <div className="w-[55%] h-full bg-white py-12 px-10">
+                <div className="lg:w-[55%] w-full h-full bg-white py-12 px-10">
                     <div className="">
                         <img className="mx-auto" src="../images/logo.png" alt="" />
                     </div>

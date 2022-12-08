@@ -1,8 +1,10 @@
 const Post = () => {
     return (
         <div className="mt-8 border border-solid border-color_07">
-            <div>
-                <img src="../images/products/blog_01.jpg" alt="" />
+            <div className="relative pt-[67%]">
+                <figure className="">
+                    <img  className="absolute inset-0 w-full h-full object-fill"src="../images/products/blog_01.jpg" alt="" />
+                </figure>
             </div>
             <div className="p-4">
                 <p className="font-medium text-[17px]">LOREM IPSUM DOLO</p>
