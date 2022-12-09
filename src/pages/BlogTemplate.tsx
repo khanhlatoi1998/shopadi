@@ -1,4 +1,4 @@
-import BlogContainer from "../components/blog/BlogContainer";
+import BlogContainer from "../components/post/BlogContainer";
 import Breadcrumb from "../components/breadcrumb";
 import Sidebar from "../components/sidebar";
 
