@@ -1,5 +1,4 @@
-$color_01: #0E5B9D;
-
+$color_01: #0e5b9d;
 
 %default_swiper_btn {
   width: 50px !important;
@@ -19,6 +18,13 @@ $color_01: #0E5B9D;
   border-radius: 50%;
   transition-duration: 300ms;
   opacity: 0 !important;
+}
+
+%detail_swiper_btn {
+  width: 27px !important;
+  height: 27px !important;
+  background: #00000090 !important;
+  border-radius: 50%;
 }
 
 .banner {
@@ -61,7 +67,10 @@ $color_01: #0E5B9D;
   }
 }
 
-.products, .latest, .post {
+.products,
+.latest,
+.post,
+.related-product {
   .swiper-button-prev {
     @extend %products_swiper_btn;
     top: 50% !important;
@@ -103,8 +112,82 @@ $color_01: #0E5B9D;
 
 .nav-item {
   &:hover {
-    & > a, i {
+    & > a,
+    i {
       color: $color_01;
     }
   }
+}
+
+.detail-slider {
+  .swiper-button-prev,
+  .swiper-button-next {
+    @extend %detail_swiper_btn;
+    color: white;
+    &::after {
+      font-size: 10px;
+    }
+  }
+
+  .swiper-button-next {
+    @extend %detail_swiper_btn;
+  }
+}
+
+
+// custom Input Number
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.number-input {
+  border: 1px solid #ddd;
+  display: inline-flex;
+}
+
+.number-input button {
+  outline:none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  min-height: 2rem;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+}
+
+.number-input button:before,
+.number-input button:after {
+  display: inline-block;
+  position: absolute;
+  content: '';
+  width: 0.5rem;
+  height: 2px;
+  background-color: #212121;
+  transform: translate(-50%, -50%);
+}
+.number-input button.plus:after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.number-input input[type=number] {
+  font-family: sans-serif;
+  max-width: 4rem;
+  padding: .5rem;
+  border: solid #ddd;
+  border-width: 0 2px;
+  font-size: 13px;
+  // height: 3rem;
+  font-weight: bold;
+  text-align: center;
 }

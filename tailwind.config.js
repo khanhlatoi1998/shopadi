@@ -14,7 +14,9 @@ module.exports = {
         color_09: '#acacac',
         color_10: '#212121',
         color_11: '#ffffff21',
-        color_12: '#acacac'
+        color_12: '#acacac',
+        sale: '#acacac',
+        text: '#666666'
       },
 
       boxShadow: {
@@ -22,7 +24,10 @@ module.exports = {
       },
 
       fontSize: {
+        'size-0': '13px',
         'size-1': '17px',
+        'size-2': '20px',
+        'size-4': '25px',
         'title': '30px',
         'title_mb': '25px',
         'price': '17px'

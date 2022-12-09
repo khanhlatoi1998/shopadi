@@ -60,8 +60,8 @@ const Header = () => {
 
 
     return (
-        <section>
-            <div className="md:flex hidden justify-between items-center px-8 pt-2 pb-3 border-b border-color_07 border-solid">
+        <section className="">
+            <div className="md:flex hidden justify-between items-center px-8 pt-2 pb-3 border-b border-color_07 border-solid bg-white">
                 <nav>
                     <i className="fa-solid fa-phone mr-1"></i>
                     <span>Free Support: 123456789</span>
@@ -89,7 +89,7 @@ const Header = () => {
                     </ul>
                 </nav>
             </div>
-            <header className="fixed lg:static  top-0 inset-x-0 z-50 bg-white">
+            <header className="fixed lg:sticky top-0 inset-x-0 z-50 bg-white">
                 <div className="relative px-8 flex items-center justify-between">
                     <div className="py-4">
                         <a href="/">

@@ -11,7 +11,7 @@ const ItemMenuSidebar: React.FC<Props> = ({
     console.log(item.subMenu)
 
     return (
-        <li className="group py-[5px] flex items-center justify-between flex-wrap cursor-pointer">
+        <li className={`${item?.active ? 'text-color_01' : ''} group py-[5px] flex items-center justify-between flex-wrap cursor-pointer`}>
             <div>
                 <span className="text-[8px] group-hover:text-color_01">{item.icon_left && item.icon_left}</span>
                 <a href="/" className={`${item?.active ? 'text-color_01' : ''} group-hover:text-color_01 ml-2`}>{item.label}</a>
@@ -24,7 +24,7 @@ const ItemMenuSidebar: React.FC<Props> = ({
                     {
                         item.subMenu?.map((itemSubMenu, index) => {
                             return (
-                                <li className="py-1" key={index}>{itemSubMenu.label}</li>
+                                <li className="py-1 hover:text-color_01" key={index}>{itemSubMenu.label}</li>
                             )
                         })
                     }

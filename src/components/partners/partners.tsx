@@ -8,7 +8,7 @@ const Partners = () => {
                 <h1 className="font-bold md:text-title text-title_mb text-center">OUR PARTNERS</h1>
                 <div className="mt-4">
                     <Swiper
-                        slidesPerView={4}
+                        slidesPerView={3}
                         spaceBetween={30}
                         autoplay={{
                             delay: 5000

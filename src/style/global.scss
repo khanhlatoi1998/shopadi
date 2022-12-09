@@ -20,9 +20,8 @@ img {
   max-width: 100%;
 }
 
-button, input {
+button, input, select, textarea {
   outline: none;
-  border: 0;
 }
 
 
@@ -36,8 +35,6 @@ button, input {
     padding-right: 15px;
   }
 }
-
-
 
 %defaullt_brand_item {
   content: "";
@@ -74,3 +71,8 @@ button, input {
   }
 }
 
+
+// Sidebar
+.sidebar-special-item + .sidebar-special-item {
+  border-top: 1px solid #eeeeee;
+}

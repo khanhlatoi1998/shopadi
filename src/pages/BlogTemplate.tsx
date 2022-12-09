@@ -1,11 +1,10 @@
+import BlogContainer from "../components/blog/BlogContainer";
 import Breadcrumb from "../components/breadcrumb";
-import ProductContainer from "../components/products/ProductContainer";
 import Sidebar from "../components/sidebar";
-import MenuSidebar from "../components/sidebar/menu/MenuSidebar";
 
-const ProductTemplate = () => {
+const BlogTemplate = () => {
     return (
-        <div className="ProductTemplate">
+        <div>
             <Breadcrumb />
             <div className="container__main flex gap-6 py-16">
                 <div className="w-[285px]">
@@ -15,12 +14,12 @@ const ProductTemplate = () => {
                 </div>
                 <div className="flex-1">
                     <div>
-                        <ProductContainer />
+                        <BlogContainer />
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 };
 
-export default ProductTemplate;
+export default BlogTemplate
