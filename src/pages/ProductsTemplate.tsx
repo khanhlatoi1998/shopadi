@@ -3,12 +3,20 @@ import ProductContainer from "../components/products/ProductContainer";
 import Sidebar from "../components/sidebar";
 import MenuSidebar from "../components/sidebar/menu/MenuSidebar";
 
-const ProductTemplate = () => {
+interface Props {
+    path: string;
+}
+
+const ProductTemplate:React.FC<Props> = ({
+    path,
+}) => {
+
+
     return (
         <div className="ProductTemplate">
-            <Breadcrumb />
+            <Breadcrumb path={path}/>
             <div className="container__main flex gap-6 py-16">
-                <div className="w-[285px]">
+                <div className="w-[285px] hidden md:block">
                     <div>
                         <Sidebar />
                     </div>

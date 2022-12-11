@@ -14,7 +14,7 @@ const Banner = () => {
                 slidesPerGroup={1}
                 navigation={true}
                 autoplay={{
-                    delay: 3000
+                    delay: 100000
                 }}
                 pagination={{
                     clickable: true,
@@ -30,7 +30,7 @@ const Banner = () => {
                 className="cursor-pointer"
             >
                 <SwiperSlide>
-                    <div className="block relative pt-[33.9%]">
+                    <div className="block top-0  pt-[33.9%]">
                         <div className="absolute w-full h-full top-0 left-0">
                             <picture>
                                 <img className="h-full w-full object-fill" src="./images/banner_01.jpg" alt="" />
