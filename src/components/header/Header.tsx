@@ -12,7 +12,7 @@ const Header = () => {
             active: true,
         },
         {
-            link: '/',
+            link: '/men',
             label: 'MEN',
             active: false,
             icon: <i className="fa-regular fa-plus"></i>,
@@ -22,7 +22,7 @@ const Header = () => {
             ]
         },
         {
-            link: '/',
+            link: 'women',
             label: 'WOMENS',
             active: false,
             icon:  <i className="fa-regular fa-plus"></i>,
@@ -61,7 +61,7 @@ const Header = () => {
 
     return (
         <section className="">
-            <div className="md:flex hidden justify-between items-center px-8 pt-2 pb-3 border-b border-color_07 border-solid bg-white">
+            <div className="lg:flex hidden justify-between items-center px-8 pt-2 pb-3 border-b border-color_07 border-solid bg-white">
                 <nav>
                     <i className="fa-solid fa-phone mr-1"></i>
                     <span>Free Support: 123456789</span>

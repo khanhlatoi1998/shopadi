@@ -1,4 +1,4 @@
-import BlogItem from "../blog/BlogItem";
+import BlogItem from "./BlogItem";
 
 const BlogContainer = () => {
     return (

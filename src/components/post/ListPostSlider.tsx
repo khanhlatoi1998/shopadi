@@ -1,10 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/css";
-import "swiper/css/navigation";
-
-import { Navigation, Pagination, Autoplay } from "swiper";
-import Post from "./Post";
+import { Autoplay, Navigation, Pagination } from "swiper";
+import Post from "./PostSlider";
 
 const ListPost = () => {
     return (

@@ -5,9 +5,9 @@ import Sidebar from "../components/sidebar";
 const BlogTemplate = () => {
     return (
         <div>
-            <Breadcrumb />
-            <div className="container__main flex gap-6 py-16">
-                <div className="w-[285px]">
+            <Breadcrumb path="blog"/>
+            <div className="container__main flex gap-8 py-16">
+                <div className="w-[285px] hidden md:block">
                     <div>
                         <Sidebar />
                     </div>

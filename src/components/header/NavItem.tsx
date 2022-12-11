@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { ItemType } from '../../contains/type/index';
 
 interface Props {
@@ -11,9 +12,9 @@ const NavItem: React.FC<Props> = (props) => {
 
     return (
         <li className="relative group cursor-pointer flex flex-wrap items-center justify-contents-between lg:border-0 border-t border-solid border-color_07">
-            <a className={`${active ? 'text-color_01' : ''} flex-1 px-4 py-2 lg:py-8  block font-medium hover:text-color_01`} href={link}>
+            <NavLink className={`${active ? 'text-color_01' : ''} flex-1 px-4 py-2 lg:py-8  block font-medium hover:text-color_01`} to={link}>
                 {label}
-            </a>
+            </NavLink>
             {
                 subMenu && <span className="lg:hidden px-4 py-2 group-headerItem">
                    {item.icon}
@@ -26,7 +27,7 @@ const NavItem: React.FC<Props> = (props) => {
                             subMenu?.map((item, index) => {
                                 return (
                                     <li key={index} className="nav-item relative px-4 flex items-center justify-between  cursor-pointer">
-                                        <a className="block py-1 flex-1" href={item.link}>{item.label}</a>
+                                        <NavLink className="block py-1 flex-1" to={item.link}>{item.label}</NavLink>
                                         {
                                             item?.icon && <i className={`${item?.icon} itemChild-hover:text-color_01`}></i>
                                         }
@@ -37,7 +38,7 @@ const NavItem: React.FC<Props> = (props) => {
                                                         item?.childSubMenu.map((itemChild, index) => {
                                                             return (
                                                                 <li key={index} className="px-4">
-                                                                    <a href={itemChild.link} className="block py-1">{itemChild.label}</a>
+                                                                    <NavLink to={itemChild.link} className="block py-1">{itemChild.label}</NavLink>
                                                                 </li>
                                                             )
                                                         })
