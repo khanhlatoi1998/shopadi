@@ -17,42 +17,42 @@ const Header = () => {
             active: false,
             icon: <i className="fa-regular fa-plus"></i>,
             subMenu: [
-                { link: '/', label: 'Hoodile' },
-                { link: '/', label: 'Hoodile' },
+                { link: '/men/hoodile', label: 'Hoodile' },
+                { link: '/men/shirt', label: 'Hoodile' },
             ]
         },
         {
-            link: 'women',
+            link: '/womens',
             label: 'WOMENS',
             active: false,
-            icon:  <i className="fa-regular fa-plus"></i>,
+            icon: <i className="fa-regular fa-plus"></i>,
             subMenu: [
-                { link: '/', label: 'Preppy style' },
-                { link: '/', label: 'Office'},
+                { link: '/womens/preppy', label: 'Preppy style' },
+                { link: '/womens/office', label: 'Office' },
             ]
         },
         {
-            link: '/',
+            link: '/shop',
             label: 'SHOP',
             active: false,
-            icon:  <i className="fa-regular fa-plus"></i>,
+            icon: <i className="fa-regular fa-plus"></i>,
             subMenu: [
-                { link: '/', label: 'Preppy style' },
-                { link: '/', label: 'Office'},
+                { link: '/shop/style', label: 'Preppy style' },
+                { link: '/shop/shirt', label: 'Office' },
             ]
         },
         {
-            link: '/',
+            link: '/office',
             label: 'OFFICE WEAR',
             active: false
         },
         {
-            link: '/',
+            link: '/products',
             label: 'PRODUCTS',
             active: false
         },
         {
-            link: '/',
+            link: '/blogs',
             label: 'BLOGS',
             active: false
         },
@@ -102,7 +102,7 @@ const Header = () => {
                                 {
                                     items.map((item, index) => {
                                         return (
-                                            <NavItem key={index} item={item}/>
+                                            <NavItem key={index} item={item} />
                                         )
                                     })
                                 }
@@ -112,7 +112,7 @@ const Header = () => {
                     <div>
                         <ul className="flex items-center justify-center gap-4 text-[20px]">
                             <li className="lg:hidden block">
-                                <button onClick={() => setOpen(!open)}className="p-2">
+                                <button onClick={() => setOpen(!open)} className="p-2">
                                     <i className="ti-menu"></i>
                                 </button>
                             </li>

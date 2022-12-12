@@ -1,12 +1,22 @@
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/css";
-import "swiper/css/navigation";
-
 import { Navigation, Pagination, Autoplay } from "swiper";
 
-const Banner = () => {
+interface BannerType {
+    image: string;
+}
+
+interface Props {
+    dataBanner: Array<BannerType>;
+}
+
+const Banner: React.FC<Props> = ({
+    dataBanner
+}) => {
+    console.log(dataBanner);
+
+
     return (
         <section className="banner mt-[76px] lg:mt-0">
             <Swiper
@@ -29,24 +39,19 @@ const Banner = () => {
                 modules={[Navigation, Autoplay, Pagination]}
                 className="cursor-pointer"
             >
-                <SwiperSlide>
-                    <div className="block top-0  pt-[33.9%]">
-                        <div className="absolute w-full h-full top-0 left-0">
-                            <picture>
-                                <img className="h-full w-full object-fill" src="./images/banner_01.jpg" alt="" />
-                            </picture>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="block relative pt-[33.9%]">
-                        <div className="absolute w-full h-full top-0 left-0">
-                            <picture>
-                                <img className="h-full w-full object-fill" src="./images/banner_02.jpg" alt="" />
-                            </picture>
-                        </div>
-                    </div>
-                </SwiperSlide>
+                {
+                    dataBanner?.map(
+                        (item: BannerType, index) =>
+                            <SwiperSlide key={index}>
+                                <div className="block top-0  pt-[33.9%]">
+                                    <div className="absolute w-full h-full top-0 left-0">
+                                        <picture>
+                                            <img className="h-full w-full object-fill" src={item.image} alt="" />
+                                        </picture>
+                                    </div>
+                                </div>
+                            </SwiperSlide>)
+                }
             </Swiper>
             <div className="shadow-md">
                 <div className="max-w-[1000px] mx-auto px-8 sm:py-8 py-6">

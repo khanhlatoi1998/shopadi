@@ -6,7 +6,7 @@ import Product from "../components/products/Product";
 const DetailTemplate = () => {
     return (
         <section>
-            <Breadcrumb path="detail"/>
+            <Breadcrumb title="detail"/>
             <div className="container__main">
                 <div className="py-16 flex flex-wrap gap-8">
                     <div className="md:w-1/2 w-full">

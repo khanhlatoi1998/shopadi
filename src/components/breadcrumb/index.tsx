@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
 
 interface Props {
-    path: string;
+    title: string;
 }
 
 
 const Breadcrumb: React.FC<Props> = ({
-    path
+    title
 }) => {
     return (
         <div className="py-8 bg-color_05">
@@ -14,9 +14,9 @@ const Breadcrumb: React.FC<Props> = ({
                 <div className="">
                     <span><i className="fa fa-home"></i></span>
                     {
-                        path && <>
+                        title && <>
                             <span><i className="ti-angle-right mx-2 text-[12px]"></i></span>
-                            <NavLink to={`/${path}`} className="text-color_01 capitalize">{path}</NavLink>
+                            <NavLink to={`/${title}`} className="text-color_01 capitalize">{title}</NavLink>
                         </>
                     }
                 </div>

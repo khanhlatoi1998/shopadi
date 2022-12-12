@@ -4,17 +4,17 @@ import Sidebar from "../components/sidebar";
 import MenuSidebar from "../components/sidebar/menu/MenuSidebar";
 
 interface Props {
-    path: string;
+    title: string;
 }
 
 const ProductTemplate:React.FC<Props> = ({
-    path,
+    title,
 }) => {
 
 
     return (
         <div className="ProductTemplate">
-            <Breadcrumb path={path}/>
+            <Breadcrumb title={title}/>
             <div className="container__main flex gap-6 py-16">
                 <div className="w-[285px] hidden md:block">
                     <div>
@@ -23,7 +23,7 @@ const ProductTemplate:React.FC<Props> = ({
                 </div>
                 <div className="flex-1">
                     <div>
-                        <ProductContainer />
+                        <ProductContainer title={title}/>
                     </div>
                 </div>
             </div>

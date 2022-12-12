@@ -5,7 +5,7 @@ import Sidebar from "../components/sidebar";
 const BlogTemplate = () => {
     return (
         <div>
-            <Breadcrumb path="blog"/>
+            <Breadcrumb title="blog"/>
             <div className="container__main flex gap-8 py-16">
                 <div className="w-[285px] hidden md:block">
                     <div>

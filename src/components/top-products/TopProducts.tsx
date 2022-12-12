@@ -1,8 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper";
-import Product from "./Product";
+import Product from "../products/Product";
 
-const ListProducts = () => {
+const ListTopProducts = () => {
     return (
         <section className="products">
             <div className="container__main px-8 md:pb-20 pb-12">
@@ -50,4 +50,4 @@ const ListProducts = () => {
     )
 };
 
-export default ListProducts;
+export default ListTopProducts;
