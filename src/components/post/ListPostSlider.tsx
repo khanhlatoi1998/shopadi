@@ -1,8 +1,16 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper";
 import Post from "./PostSlider";
+import { PostType } from "../../contains/type";
 
-const ListPost = () => {
+interface Props {
+    dataPosts: Array<PostType>;
+}
+
+const ListPostSlider: React.FC<Props> = ({
+    dataPosts,
+}) => {
+
     return (
         <section className="post py-16">
             <div className="container__main">
@@ -31,23 +39,17 @@ const ListPost = () => {
                     modules={[Navigation, Autoplay, Pagination]}
                     className="cursor-pointer"
                 >
-                    <SwiperSlide>
-                        <Post />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Post />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Post />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Post />
-                    </SwiperSlide>
-
+                    {
+                        dataPosts && dataPosts?.map((item: PostType) => (
+                            <SwiperSlide key={item.id}>
+                                <Post item={item}/>
+                            </SwiperSlide>
+                        ))
+                    }
                 </Swiper>
             </div>
         </section>
     );
 };
 
-export default ListPost;
+export default ListPostSlider;

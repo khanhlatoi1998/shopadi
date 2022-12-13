@@ -1,27 +1,37 @@
-const BlogItem = () => {
+import { NavLink } from "react-router-dom";
+import { PostType } from "../../contains/type";
+
+interface Props {
+    item: PostType;
+}
+
+const BlogItem: React.FC<Props> = ({
+    item,
+}) => {
+
     return (
-        <div className="mt-8">
+        <NavLink to={`/blogs`} className="mt-8">
             <div>
                 <div>
-                    <img className="w-full h-full object-cover" src="../images/products/blog_01.jpg" alt="" />
+                    <img className="w-full h-full object-cover" src={item.image} alt="" />
                 </div>
-                <h3 className="text-size-1 font-bold mt-2">Duis Pulvinar Augue Nisi</h3>
+                <h3 className="text-size-1 font-bold mt-2">{item.title}</h3>
                 <div className="mt-4 flex flex-wrap gap-4 items-center">
                     <div className="flex items-center">
                         <span><i className="fa fa-comment"></i></span>
-                        <p className="ml-2 mt-[-2px]">1 comments</p>
+                        <p className="ml-2 mt-[-2px]">{item.comment.length} comments</p>
                     </div>
                     <div className="flex items-center">
                         <i className="ti-calendar"></i>
-                        <p className="ml-2 mt-[-2px]">13 Feb 2020</p>
+                        <p className="ml-2 mt-[-2px]">{item.createDate}</p>
                     </div>
                 </div>
             </div>
             <div>
-                <p className="text-text mt-4 pr-4">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, dolores eos qui ratione voluptatem sequi nesciunt...</p>
+                <p className="text-text mt-4 pr-4">{item.desc}</p>
                 <button className="mt-4">Read more</button>
             </div>
-        </div>
+        </NavLink>
     );
 };
 

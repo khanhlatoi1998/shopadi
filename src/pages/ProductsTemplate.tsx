@@ -2,15 +2,19 @@ import Breadcrumb from "../components/breadcrumb";
 import ProductContainer from "../components/products/ProductContainer";
 import Sidebar from "../components/sidebar";
 import MenuSidebar from "../components/sidebar/menu/MenuSidebar";
+import { ProductType } from "../contains/type";
 
 interface Props {
     title: string;
+    dataProducts: Array<ProductType>;
 }
 
 const ProductTemplate:React.FC<Props> = ({
     title,
+    dataProducts,
 }) => {
 
+    console.log(dataProducts);
 
     return (
         <div className="ProductTemplate">
@@ -23,7 +27,7 @@ const ProductTemplate:React.FC<Props> = ({
                 </div>
                 <div className="flex-1">
                     <div>
-                        <ProductContainer title={title}/>
+                        <ProductContainer title={title} dataProducts={dataProducts}/>
                     </div>
                 </div>
             </div>

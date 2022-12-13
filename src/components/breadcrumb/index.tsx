@@ -9,7 +9,7 @@ const Breadcrumb: React.FC<Props> = ({
     title
 }) => {
     return (
-        <div className="py-8 bg-color_05">
+        <div className="py-8 bg-color_05 lg:mt-0 mt-[76px]">
             <div className="container__main ">
                 <div className="">
                     <span><i className="fa fa-home"></i></span>

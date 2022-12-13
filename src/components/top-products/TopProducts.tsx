@@ -1,8 +1,14 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper";
-import Product from "../products/Product";
+import SliderProducts from "../products/SliderProducts";
+import { ProductType } from "../../contains/type";
 
-const ListTopProducts = () => {
+interface Props {
+    dataProducts: Array<ProductType>;
+}
+
+const ListTopProducts: React.FC<Props> = ({
+    dataProducts,
+}) => {
+
     return (
         <section className="products">
             <div className="container__main px-8 md:pb-20 pb-12">
@@ -12,39 +18,7 @@ const ListTopProducts = () => {
                     <a href="#" className="font-medium px-5 border-x border-solid border-color_07">SPECIAL</a>
                     <a href="#" className="font-medium px-5">BESTSELLER</a>
                 </div>
-                <div className="mt-8">
-                    <Swiper
-                        slidesPerView={1}
-                        spaceBetween={30}
-                        slidesPerGroup={1}
-                        loop={true}
-                        navigation={true}
-                        autoplay={{
-                            delay: 3000
-                        }}
-                        pagination={{
-                            clickable: true,
-                            enabled: false
-                        }}
-                        breakpoints={{
-                            480: {
-                                slidesPerView: 2,
-                            },
-                            767: {
-                                slidesPerView: 3,
-                            },
-                            1200: {
-                                slidesPerView: 4
-                            }
-                        }}
-                        modules={[Pagination, Navigation, Autoplay]}
-                        className="mySwiper"
-                    >
-                        <SwiperSlide>
-                            <Product />
-                        </SwiperSlide>
-                    </Swiper>
-                </div>
+                <SliderProducts dataProducts={dataProducts}/>
             </div>
         </section>
     )

@@ -1,8 +1,16 @@
 import BlogContainer from "../components/post/BlogContainer";
 import Breadcrumb from "../components/breadcrumb";
 import Sidebar from "../components/sidebar";
+import { PostType } from "../contains/type";
 
-const BlogTemplate = () => {
+interface Props {
+    dataPosts: Array<PostType>;
+}
+
+const BlogTemplate: React.FC<Props> = ({
+    dataPosts
+}) => {
+
     return (
         <div>
             <Breadcrumb title="blog"/>
@@ -14,7 +22,7 @@ const BlogTemplate = () => {
                 </div>
                 <div className="flex-1">
                     <div>
-                        <BlogContainer />
+                        <BlogContainer dataPosts={dataPosts}/>
                     </div>
                 </div>
             </div>

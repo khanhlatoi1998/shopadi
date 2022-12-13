@@ -1,17 +1,34 @@
+import { useEffect, useState } from 'react';
+
 import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Breadcrumb from "../components/breadcrumb";
+
+import productApi from '../api/productsApi';
+
 import Product from "../components/products/Product";
+import { useParams } from 'react-router-dom';
+import { ProductType } from '../contains/type';
 
 const DetailTemplate = () => {
+    const params = useParams();
+    const [product, setProduct] = useState<ProductType>();
+
+    useEffect(() => {
+        productApi.getItem(params.id)
+            .then((res: any) => {
+                setProduct(res);
+            })
+            .catch((err) => { })
+    }, []);
     return (
         <section>
-            <Breadcrumb title="detail"/>
+            <Breadcrumb title="detail" />
             <div className="container__main">
                 <div className="py-16 flex flex-wrap gap-8">
                     <div className="md:w-1/2 w-full">
                         <div className="">
-                            <img className="mx-auto w-full max-w-[400px] md:max-w-[600px] h-[500px] object-cover" src="../images/brand_01.jpg" alt="" />
+                            <img className="mx-auto w-full max-w-[400px] md:max-w-[600px] h-[500px] object-cover" src={product?.image} alt="" />
                         </div>
                         <div className="detail-slider mt-6 w-full px-6 relative">
                             <Swiper
@@ -28,32 +45,21 @@ const DetailTemplate = () => {
                                 }}
                             // modules={[Autoplay]}
                             >
-                                <SwiperSlide>
-                                    <div>
-                                        <img className="min-h-[150px] w-full object-cover" src="../images/brand_01.jpg" alt="" />
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div>
-                                        <img className="min-h-[150px] w-full object-cover" src="../images/brand_01.jpg" alt="" />
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div>
-                                        <img className="min-h-[150px] w-full object-cover" src="../images/brand_01.jpg" alt="" />
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div>
-                                        <img className="min-h-[150px] w-full object-cover" src="../images/brand_01.jpg" alt="" />
-                                    </div>
-                                </SwiperSlide>
+                                {
+                                    product?.subImage?.map((item, index) => (
+                                        <SwiperSlide key={index}>
+                                            <div>
+                                                <img className="min-h-[150px] w-full object-cover" src={item} alt="" />
+                                            </div>
+                                        </SwiperSlide>
+                                    ))
+                                }
                             </Swiper>
                         </div>
                     </div>
                     <div className="flex-1">
                         <div className="border-b border-solid border-color_07 pb-8">
-                            <p className="text-size-4 font-medium">air's shirt</p>
+                            <p className="text-size-4 font-medium">{product?.name}</p>
                             <div className="flex items-center gap-5 mt-4">
                                 <span className="text-color_01">
                                     <i className="ti-star"></i>
@@ -65,7 +71,9 @@ const DetailTemplate = () => {
                                 <p> 0 reviews</p>
                                 <a href="/"><span><i className="fa-solid fa-pen mr-1"></i></span>  Write a review</a>
                             </div>
-                            <p className="text-color_01 text-size-4 font-medium mt-4">$98.00</p>
+                            <p className="text-color_01 text-size-4 font-medium mt-4">
+                                ${product?.discount != 0 ? product?.discount : product?.price}
+                            </p>
                             <form action="" className="mt-2 flex items-center">
                                 <div className="number-input">
                                     <button onClick={(e: any) => { e.preventDefault(); e.target.parentNode.querySelector('input[type=number]').stepDown() }} ></button>
@@ -76,7 +84,7 @@ const DetailTemplate = () => {
                             </form>
                         </div>
                         <div className="text-white text-size-0 mt-6">
-                            <button className="bg-[#1877f2] py-[2px] px-2 rounded"><i className="fa-solid fa-thumbs-up"></i> Like 0</button>
+                            <button className="bg-[#1877f2] py-[2px] px-2 rounded"><i className="fa-solid fa-thumbs-up"></i> Like {product?.like}</button>
                             <button className="bg-[#1d9bf0] py-[2px] pl-3 pr-2 ml-6 rounded-l-full rounded-r"><i className="ti-twitter"></i> twitter</button>
                             <button className="bg-[#fe6d4c] py-[2px] px-2 rounded"><i className="fa-solid fa-plus"></i> Share</button>
                         </div>
@@ -166,7 +174,7 @@ const DetailTemplate = () => {
                             }}
                             modules={[Autoplay]}
                         >
-                            <SwiperSlide>
+                            {/* <SwiperSlide>
                                 <Product />
                             </SwiperSlide>
                             <SwiperSlide>
@@ -177,7 +185,7 @@ const DetailTemplate = () => {
                             </SwiperSlide>
                             <SwiperSlide>
                                 <Product />
-                            </SwiperSlide>
+                            </SwiperSlide> */}
                         </Swiper>
                     </div>
                 </div>

@@ -14,7 +14,6 @@ interface Props {
 const Banner: React.FC<Props> = ({
     dataBanner
 }) => {
-    console.log(dataBanner);
 
 
     return (

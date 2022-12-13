@@ -8,7 +8,6 @@ interface Props {
 const ItemMenuSidebar: React.FC<Props> = ({
     item,
 }) => {
-    console.log(item.subMenu)
 
     return (
         <li className={`${item?.active ? 'text-color_01' : ''} group py-[5px] flex items-center justify-between flex-wrap cursor-pointer`}>
