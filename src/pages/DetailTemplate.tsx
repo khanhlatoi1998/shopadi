@@ -74,13 +74,30 @@ const DetailTemplate = () => {
                             <p className="text-color_01 text-size-4 font-medium mt-4">
                                 ${product?.discount != 0 ? product?.discount : product?.price}
                             </p>
-                            <form action="" className="mt-2 flex items-center">
-                                <div className="number-input">
-                                    <button onClick={(e: any) => { e.preventDefault(); e.target.parentNode.querySelector('input[type=number]').stepDown() }} ></button>
-                                    <input className="quantity" min="1" name="quantity" defaultValue="1" type="number" />
-                                    <button onClick={(e: any) => { e.preventDefault(); e.target.parentNode.querySelector('input[type=number]').stepUp() }} className="plus"></button>
+                            <form action="" className="mt-4 flex flex-col gap-4 flex-wrap">
+                                <div>
+                                    <p>Màu: </p>
+                                    <ul className="mt-2 flex gap-4">
+                                        <li className="w-[35px] h-[35px] scale-[1.2] bg-color_01 cursor-pointer"></li>
+                                        <li className="w-[35px] h-[35px] bg-color_01 cursor-pointer"></li>
+                                        <li className="w-[35px] h-[35px] bg-color_01 cursor-pointer"></li>
+                                    </ul>
                                 </div>
-                                <button className="py-2 px-6 ml-4 bg-color_01 rounded-full text-white font-medium">ADD TO CART</button>
+                                <div>
+                                    <p>Size: </p>
+                                    <ul className="mt-2 flex gap-4 flex-wrap">
+                                        <li className="w-[35px] h-[35px] border border-solid flex items-center justify-center cursor-pointer">S</li>
+                                        <li className="w-[35px] h-[35px] border border-solid border-color_07 flex items-center justify-center cursor-pointer">XL</li>
+                                    </ul>
+                                </div>
+                                <div className="flex items-center">
+                                    <div className="number-input">
+                                        <button onClick={(e: any) => { e.preventDefault(); e.target.parentNode.querySelector('input[type=number]').stepDown() }} ></button>
+                                        <input className="quantity" min="1" name="quantity" defaultValue="1" type="number" />
+                                        <button onClick={(e: any) => { e.preventDefault(); e.target.parentNode.querySelector('input[type=number]').stepUp() }} className="plus"></button>
+                                    </div>
+                                    <button className="py-2 px-6 ml-4 bg-color_01 rounded-full text-white font-medium">ADD TO CART</button>
+                                </div>
                             </form>
                         </div>
                         <div className="text-white text-size-0 mt-6">

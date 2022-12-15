@@ -16,11 +16,11 @@ import { useState, useEffect } from 'react';
 import Footer from './components/footer/footer';
 import Header from './components/header/Header';
 // import ProductTemplate from './pages/ProductsTemplate';
-import Breadcrumb from './components/breadcrumb';
 import DetailTemplate from './pages/DetailTemplate';
 import BlogTemplate from './pages/BlogTemplate';
 import React, { Suspense } from 'react';
 import productApi from './api/productsApi';
+import CartTemplate from './pages/CartTemplate';
 
 function App() {
   const HomePage = React.lazy(() => import('./pages/HomePage'));
@@ -60,23 +60,23 @@ function App() {
             />
             <Route
               path="/men"
-              element={<ProductTemplate title="men"  dataProducts={data?.products}/>}
+              element={<ProductTemplate title="men" category="men" dataProducts={data?.products}/>}
             />
             <Route
               path="/womens"
-              element={<ProductTemplate title="womens" dataProducts={data?.products}/>}
+              element={<ProductTemplate title="womens" category="womens" dataProducts={data?.products}/>}
             />
             <Route
               path="/shop"
-              element={<ProductTemplate title="shop" dataProducts={data?.products}/>}
+              element={<ProductTemplate title="shop" category="shop" dataProducts={data?.products}/>}
             />
             <Route
               path="/office"
-              element={<ProductTemplate title="office wear" dataProducts={data?.products}/>}
+              element={<ProductTemplate title="office wear" category="office" dataProducts={data?.products}/>}
             />
             <Route
               path="/products"
-              element={<ProductTemplate title="products" dataProducts={data?.products}/>}
+              element={<ProductTemplate title="products" category="products" dataProducts={data?.products}/>}
             />
             <Route
               path="/detail/:id"
@@ -85,6 +85,10 @@ function App() {
             <Route
               path="/blogs"
               element={<BlogTemplate dataPosts={data?.posts} />}
+            />
+            <Route
+              path="/cart"
+              element={<CartTemplate />}
             />
           </Routes>
           <Footer />

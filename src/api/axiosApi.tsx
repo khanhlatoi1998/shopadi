@@ -6,11 +6,7 @@ const axiosClient = axios.create({
     headers: {
         'content-type': 'application/json',
     },
-    paramsSerializer: {
-        encode: (params: any) => {
-            return queryString.stringify(params,)
-        },
-    },
+    // paramsSerializer: (params: string | any) => queryString.stringify(params)
 });
 
 
