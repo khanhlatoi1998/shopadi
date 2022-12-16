@@ -5,14 +5,14 @@ import { ProductType } from "../../contains/type";
 
 interface Props {
     title: string;
-    dataProducts: Array<ProductType>;
+    listProduct: Array<ProductType>;
 }
 
 const ProductContainer: React.FC<Props> = ({
     title,
-    dataProducts,
+    listProduct,
 }) => {
-    console.log(dataProducts);
+    console.log(listProduct);
 
     const handlePageClick = (e: any) => {
         
@@ -25,7 +25,7 @@ const ProductContainer: React.FC<Props> = ({
                 <SortTemplate />
                 <div className="grid grid-cols-3 gap-8 py-8">
                     {
-                        dataProducts?.map(item => (
+                        listProduct?.map(item => (
                             <Product key={item.id} item={item} />
                         ))
                     }

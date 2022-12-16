@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Breadcrumb from "../components/breadcrumb";
 import ProductContainer from "../components/products/ProductContainer";
 import Sidebar from "../components/sidebar";
@@ -16,17 +16,19 @@ const ProductTemplate: React.FC<Props> = ({
     category
 }) => {
 
+    const [ listProduct, setListProduct ] = useState<Array<ProductType>>([]);
+
     useEffect(() => {
         const params = {
             page: 2,
             limit: 3
         }
-        productApi.getAllPagination(params)
-            .then(() => {
-
+        productApi.getCategoryItems(category)
+            .then((res: any) => {
+                setListProduct(res);
             })
             .catch(() => { });
-    }, []);
+    }, [window.location.href]);
 
     return (
         <div className="ProductTemplate">
@@ -39,7 +41,7 @@ const ProductTemplate: React.FC<Props> = ({
                 </div>
                 <div className="flex-1">
                     <div>
-                        <ProductContainer title={title} dataProducts={dataProducts} />
+                        <ProductContainer title={title} listProduct={listProduct} />
                     </div>
                 </div>
             </div>

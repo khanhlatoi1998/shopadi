@@ -32,7 +32,6 @@ function App() {
     productApi.getAll()
       .then((res: any) => {
         setData(res);
-        console.log(res);
       })
       .catch((err) => { })
   }, []);

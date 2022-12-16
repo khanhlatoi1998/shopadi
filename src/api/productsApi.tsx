@@ -2,7 +2,7 @@ import axiosClient from "./axiosApi";
 import queryString from 'query-string';
 
 const productApi = {
-    getAll: (params?: any) => {
+    getAll: (params?: object) => {
         let url = '/products/all';
         return axiosClient.get(url, { params });
     },
@@ -10,8 +10,12 @@ const productApi = {
         let url = `/products/item/${id}`;
         return axiosClient.get(url);
     },
-    getAllPagination: (params?: any) => {
+    getAllPagination: (params?: object) => {
         let url = `/products`;
+        return axiosClient.get(url, { params });
+    },
+    getCategoryItems: (category: string, params?: object) => {
+        let url = `/products/category/${category}`;
         return axiosClient.get(url, { params });
     }
 };
