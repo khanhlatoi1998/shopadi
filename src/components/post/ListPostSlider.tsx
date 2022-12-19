@@ -4,11 +4,11 @@ import Post from "./PostSlider";
 import { PostType } from "../../contains/type";
 
 interface Props {
-    dataPosts: Array<PostType>;
+    sliderPosts: Array<PostType>;
 }
 
 const ListPostSlider: React.FC<Props> = ({
-    dataPosts,
+    sliderPosts,
 }) => {
 
     return (
@@ -40,7 +40,7 @@ const ListPostSlider: React.FC<Props> = ({
                     className="cursor-pointer"
                 >
                     {
-                        dataPosts && dataPosts?.map((item: PostType) => (
+                        sliderPosts && sliderPosts?.map((item: PostType) => (
                             <SwiperSlide key={item.id}>
                                 <Post item={item}/>
                             </SwiperSlide>

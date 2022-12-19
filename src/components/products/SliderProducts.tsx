@@ -4,11 +4,11 @@ import Product from "./Product";
 import { ProductType } from "../../contains/type";
 
 interface Props {
-    dataProducts: Array<ProductType>;
+    sliderProducts: Array<ProductType>;
 }
 
 const SliderProducts: React.FC<Props> = ({
-    dataProducts,
+    sliderProducts,
 }) => {
 
     return (
@@ -41,7 +41,7 @@ const SliderProducts: React.FC<Props> = ({
                 className="mySwiper"
             >
                 {
-                    dataProducts && dataProducts.map((item: ProductType, index) => (
+                    sliderProducts && sliderProducts.map((item: ProductType, index) => (
                         <SwiperSlide key={item.id}>
                             <Product item={item}/>
                         </SwiperSlide>

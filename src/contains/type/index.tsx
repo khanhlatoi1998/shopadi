@@ -10,6 +10,7 @@ export interface ItemType {
 }
 
 export interface ProductType {
+    _id: string;
     id: string | number;
     image: string;
     subImage?: Array<string>;
@@ -37,4 +38,17 @@ export interface PostType {
     view: number;
     share: number;
     createDate: string;
+}
+
+export interface DataProductsType {
+    data: Array<ProductType>;
+    total?: number;
+    limit: number;
+    page: number;
+}
+export interface DataPostsType {
+    data: Array<PostType>;
+    total?: number;
+    limit: number;
+    page: number;
 }

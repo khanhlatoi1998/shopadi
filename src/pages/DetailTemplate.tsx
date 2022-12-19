@@ -18,6 +18,7 @@ const DetailTemplate = () => {
         productApi.getItem(params.id)
             .then((res: any) => {
                 setProduct(res);
+                console.log(res);
             })
             .catch((err) => { })
     }, []);

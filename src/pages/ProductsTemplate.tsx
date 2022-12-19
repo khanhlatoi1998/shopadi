@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Breadcrumb from "../components/breadcrumb";
 import ProductContainer from "../components/products/ProductContainer";
 import Sidebar from "../components/sidebar";
-import { ProductType } from "../contains/type";
+import { DataProductsType, ProductType } from "../contains/type";
 import productApi from '../api/productsApi';
 interface Props {
     title: string;
@@ -13,22 +13,37 @@ interface Props {
 const ProductTemplate: React.FC<Props> = ({
     title,
     dataProducts,
-    category
+    category,
 }) => {
 
-    const [ listProduct, setListProduct ] = useState<Array<ProductType>>([]);
+    const [data, setData] = useState<DataProductsType>();
+
+    const handlePageClick = (e: any) => {
+        console.log(e.selected + 1);
+        const params = {
+            limit: 12,
+            page: e.selected + 1
+        }
+        productApi.getCategoryItems(category, params)
+            .then((res: any) => {
+                setData(res);
+            })
+            .catch((err) => { })
+    };
 
     useEffect(() => {
         const params = {
-            page: 2,
-            limit: 3
+            page: 1,
+            limit: 12
         }
-        productApi.getCategoryItems(category)
+        productApi.getCategoryItems(category, params)
             .then((res: any) => {
-                setListProduct(res);
+                setData(res);
             })
             .catch(() => { });
     }, [window.location.href]);
+
+
 
     return (
         <div className="ProductTemplate">
@@ -41,7 +56,7 @@ const ProductTemplate: React.FC<Props> = ({
                 </div>
                 <div className="flex-1">
                     <div>
-                        <ProductContainer title={title} listProduct={listProduct} />
+                        <ProductContainer title={title} data={data} handlePageClick={handlePageClick} />
                     </div>
                 </div>
             </div>

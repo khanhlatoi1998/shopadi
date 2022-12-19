@@ -2,6 +2,8 @@ import BlogContainer from "../components/post/BlogContainer";
 import Breadcrumb from "../components/breadcrumb";
 import Sidebar from "../components/sidebar";
 import { PostType } from "../contains/type";
+import { useEffect, useState } from "react";
+import postsApi from "../api/postsApi";
 
 interface Props {
     dataPosts: Array<PostType>;
@@ -10,6 +12,19 @@ interface Props {
 const BlogTemplate: React.FC<Props> = ({
     dataPosts
 }) => {
+    const [listPost, setListPost] = useState<Array<PostType>>([]);
+
+    useEffect(() => {
+        const params = {
+            limit: 3,
+            page: 1
+        };
+        postsApi.getListPost(params)
+        .then((res: any) => {
+            setListPost(res);
+        })
+        .catch((err) => {});
+    }, []);
 
     return (
         <div>

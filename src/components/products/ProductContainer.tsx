@@ -1,35 +1,48 @@
 import Product from "./Product";
 import SortTemplate from "./SortTemPlate";
 import ReactPaginate from "react-paginate";
-import { ProductType } from "../../contains/type";
+import { DataProductsType, ProductType } from "../../contains/type";
+import { ClipLoader } from "react-spinners";
+import productApi from "../../api/productsApi";
 
 interface Props {
-    title: string;
-    listProduct: Array<ProductType>;
+    title: string | undefined;
+    data: DataProductsType | undefined;
+    handlePageClick: (e: any) => void;
 }
 
 const ProductContainer: React.FC<Props> = ({
     title,
-    listProduct,
+    data,
+    handlePageClick
 }) => {
-    console.log(listProduct);
 
-    const handlePageClick = (e: any) => {
-        
-        console.log(e.selected);
-    };
+    let pageCount = Math.ceil(data?.total ? (data?.total / data?.limit) : 4);
+
     return (
         <section>
             <div className="text-title font-bold uppercase">{title}</div>
             <div className="mt-8">
                 <SortTemplate />
-                <div className="grid grid-cols-3 gap-8 py-8">
-                    {
-                        listProduct?.map(item => (
-                            <Product key={item.id} item={item} />
-                        ))
-                    }
-                </div>
+                {data?.data?.length 
+                    ? <div className="grid grid-cols-3 gap-8 py-8">
+                        {
+                            data?.data?.map((item: ProductType) => (
+                                <Product key={item.id} item={item} />
+                            ))
+                        }
+                    </div>
+                    : <div className="h-[400px] flex items-center justify-center">
+                        <ClipLoader
+                            color={'blue'}
+                            loading={true}
+                            // cssOverride={override}
+                            size={50}
+                            aria-label="Loading Spinner"
+                            data-testid="loader"
+                        />
+                    </div>
+                }
                 <div>
                     <ReactPaginate
                         breakLabel="..."
@@ -42,7 +55,7 @@ const ProductContainer: React.FC<Props> = ({
                         nextLinkClassName="px-2 py-1"
                         pageRangeDisplayed={3}
                         marginPagesDisplayed={2}
-                        pageCount={3}
+                        pageCount={pageCount}
                         onPageChange={handlePageClick}
                     />
                 </div>

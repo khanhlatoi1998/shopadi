@@ -2,11 +2,11 @@ import SliderProducts from "../products/SliderProducts";
 import { ProductType } from "../../contains/type";
 
 interface Props {
-    dataProducts: Array<ProductType>;
+    sliderProducts: Array<ProductType>;
 }
 
 const ListTopProducts: React.FC<Props> = ({
-    dataProducts,
+    sliderProducts,
 }) => {
 
     return (
@@ -18,7 +18,7 @@ const ListTopProducts: React.FC<Props> = ({
                     <a href="#" className="font-medium px-5 border-x border-solid border-color_07">SPECIAL</a>
                     <a href="#" className="font-medium px-5">BESTSELLER</a>
                 </div>
-                <SliderProducts dataProducts={dataProducts}/>
+                <SliderProducts sliderProducts={sliderProducts}/>
             </div>
         </section>
     )

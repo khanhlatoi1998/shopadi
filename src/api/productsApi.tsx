@@ -10,7 +10,7 @@ const productApi = {
         let url = `/products/item/${id}`;
         return axiosClient.get(url);
     },
-    getAllPagination: (params?: object) => {
+    getListItem: (params?: object) => {
         let url = `/products`;
         return axiosClient.get(url, { params });
     },
