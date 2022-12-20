@@ -48,12 +48,11 @@ const HomePage: React.FC<Props> = ({
             .catch(err => { });
 
         ortherApi.getAll()
-        .then((res: any) => {
-            setDataBanner(res.banner);
-            setDataBrand(res.brand);
-            console.log(res)
-        })
-        .catch(err => {});
+            .then((res: any) => {
+                setDataBanner(res.banner);
+                setDataBrand(res.brand);
+            })
+            .catch(err => { });
     }, []);
 
     return (

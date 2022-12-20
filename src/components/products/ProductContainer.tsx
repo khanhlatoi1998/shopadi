@@ -28,7 +28,7 @@ const ProductContainer: React.FC<Props> = ({
                     ? <div className="grid grid-cols-3 gap-8 py-8">
                         {
                             data?.data?.map((item: ProductType) => (
-                                <Product key={item.id} item={item} />
+                                <Product key={item._id} item={item} />
                             ))
                         }
                     </div>

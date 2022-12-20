@@ -2,6 +2,7 @@ import NavItem from "./NavItem";
 import { ItemType } from '../../contains/type/index';
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
     const [open, setOpen] = useState<boolean>(false);
@@ -59,6 +60,8 @@ const Header = () => {
         },
     ]
 
+    const listCart = useSelector((state: any) => state.listCart);
+
 
     return (
         <section className="">
@@ -93,9 +96,9 @@ const Header = () => {
             <header className="fixed lg:sticky top-0 inset-x-0 z-50 bg-white">
                 <div className="relative px-8 flex items-center justify-between">
                     <div className="py-4">
-                        <a href="/">
+                        <NavLink to="/">
                             <img src="../images/logo.png" alt="" />
-                        </a>
+                        </NavLink>
                     </div>
                     <div>
                         <nav>
@@ -125,7 +128,9 @@ const Header = () => {
                             <li>
                                 <NavLink to="/cart" className="relative">
                                     <span className="absolute text-white right-0 top-0 bg-black text-[10px] w-[16px] h-[16px] flex items-center justify-center rounded-full translate-x-[10px] translate-y-[-50%]">
-                                        12
+                                        {
+                                            listCart.length
+                                        }
                                     </span>
                                     <i className="ti-bag"></i>
                                 </NavLink>

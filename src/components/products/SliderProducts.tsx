@@ -42,7 +42,7 @@ const SliderProducts: React.FC<Props> = ({
             >
                 {
                     sliderProducts && sliderProducts.map((item: ProductType, index) => (
-                        <SwiperSlide key={item.id}>
+                        <SwiperSlide key={item._id}>
                             <Product item={item}/>
                         </SwiperSlide>
                     ))

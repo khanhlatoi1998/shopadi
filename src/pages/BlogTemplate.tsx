@@ -1,18 +1,29 @@
 import BlogContainer from "../components/post/BlogContainer";
 import Breadcrumb from "../components/breadcrumb";
 import Sidebar from "../components/sidebar";
-import { PostType } from "../contains/type";
+import { DataPostsType, PostType } from "../contains/type";
 import { useEffect, useState } from "react";
 import postsApi from "../api/postsApi";
 
 interface Props {
-    dataPosts: Array<PostType>;
 }
 
 const BlogTemplate: React.FC<Props> = ({
-    dataPosts
 }) => {
-    const [listPost, setListPost] = useState<Array<PostType>>([]);
+    const [dataPosts, setDataPosts] = useState<DataPostsType>();
+
+    const handlePageClick = (e: any) => {
+        console.log(e.selected);
+        const params = {
+            limit: 3,
+            page: e.selected + 1
+        }
+        postsApi.getListPost(params)
+            .then((res: any) => {
+                setDataPosts(res);
+            })
+            .catch(err => { });
+    };
 
     useEffect(() => {
         const params = {
@@ -20,15 +31,15 @@ const BlogTemplate: React.FC<Props> = ({
             page: 1
         };
         postsApi.getListPost(params)
-        .then((res: any) => {
-            setListPost(res);
-        })
-        .catch((err) => {});
+            .then((res: any) => {
+                setDataPosts(res);
+            })
+            .catch((err) => { });
     }, []);
 
     return (
         <div>
-            <Breadcrumb title="blog"/>
+            <Breadcrumb title="blog" />
             <div className="container__main flex gap-8 py-16">
                 <div className="w-[285px] hidden md:block">
                     <div>
@@ -37,7 +48,7 @@ const BlogTemplate: React.FC<Props> = ({
                 </div>
                 <div className="flex-1">
                     <div>
-                        <BlogContainer dataPosts={dataPosts}/>
+                        <BlogContainer dataPosts={dataPosts} handlePageClick={handlePageClick} />
                     </div>
                 </div>
             </div>

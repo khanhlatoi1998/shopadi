@@ -83,7 +83,7 @@ function App() {
             />
             <Route
               path="/blogs"
-              element={<BlogTemplate dataPosts={data?.posts} />}
+              element={<BlogTemplate />}
             />
             <Route
               path="/cart"

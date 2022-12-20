@@ -12,8 +12,6 @@ const Brand: React.FC<Props> = ({
     dataBrand
 }) => {
 
-    console.log(dataBrand);
-
     return (
         <section className="">
             <div className="container__main px-12 md:py-20 py-12">

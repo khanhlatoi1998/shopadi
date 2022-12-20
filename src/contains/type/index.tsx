@@ -11,7 +11,6 @@ export interface ItemType {
 
 export interface ProductType {
     _id: string;
-    id: string | number;
     image: string;
     subImage?: Array<string>;
     name: string;
@@ -26,6 +25,7 @@ export interface ProductType {
     view: number;
     share: number;
     comment?: [];
+    quantity: number;
 }
 
 export interface PostType {
@@ -42,13 +42,13 @@ export interface PostType {
 
 export interface DataProductsType {
     data: Array<ProductType>;
-    total?: number;
+    total: number;
     limit: number;
     page: number;
 }
 export interface DataPostsType {
     data: Array<PostType>;
-    total?: number;
+    total: number;
     limit: number;
     page: number;
 }
