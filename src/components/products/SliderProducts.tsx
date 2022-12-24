@@ -4,7 +4,7 @@ import Product from "./Product";
 import { ProductType } from "../../contains/type";
 
 interface Props {
-    sliderProducts: Array<ProductType>;
+    sliderProducts?: Array<ProductType>;
 }
 
 const SliderProducts: React.FC<Props> = ({

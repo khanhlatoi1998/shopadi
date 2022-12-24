@@ -1,6 +1,6 @@
 import Breadcrumb from "../components/breadcrumb";
 import CartWrapper from "../components/cart/CartWrapper";
-import OrderForm from "../components/form/OrderForm";
+import ContactForm from "../components/form/ContactForm";
 
 const CartTemplate = () => {
     return (
@@ -17,7 +17,7 @@ const CartTemplate = () => {
                     <div className="flex-1">
                         <h2 className="text-size-2 font-bold">Người mua/nhận hàng</h2>
                         <div className="mt-4">
-                            <OrderForm />
+                            <ContactForm />
                         </div>
                     </div>
                 </div>

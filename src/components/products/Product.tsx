@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { ProductType } from "../../contains/type";
-import { addItem } from "../../redux/sliderCart";
+import { addItem } from "../../redux/sliderListCart";
 
 interface Props {
     item: ProductType;
@@ -55,7 +55,7 @@ const Product: React.FC<Props> = ({
             <div className="text-center mt-5">
                 <p>{item?.name}</p>
                 <p className={`font-medium text-price`}>
-                    <span className={`${item?.discount != 0 ? 'line-through opacity-70' : 'text-color_01'}`}>${item?.price}</span>
+                    <span className={`${item?.discount != 0 ? 'line-through opacity-70' : 'text-color_01'}`}>${new Intl.NumberFormat().format(item?.price)}</span>
                     <span className="text-color_01 ml-3">{item?.discount != 0 ? `$${item?.discount}` : ''}</span>
                 </p>
             </div>

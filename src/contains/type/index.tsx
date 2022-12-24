@@ -15,16 +15,31 @@ export interface ProductType {
     subImage?: Array<string>;
     name: string;
     category: string;
+    color_group?: Array<any>;
+    size_group?: Array<any>;
     color?: string;
+    size?: string;
     slug: string;
-    price: number | string;
-    discount: number | string;
+    price: number;
+    discount: number;
     rating: number | string;
     type?: string;
     like: number;
     view: number;
     share: number;
-    comment?: [];
+    comment?: Array<any>;
+    quantity: number;
+}
+
+export interface CartItemType {
+    _id: string;
+    image: string;
+    name: string;
+    color: string;
+    size: string;
+    slug: string;
+    price: number | string;
+    discount: number | string;
     quantity: number;
 }
 
@@ -51,4 +66,12 @@ export interface DataPostsType {
     total: number;
     limit: number;
     page: number;
+}
+
+
+export interface ContactType {
+    name: string;
+    phone: number | string;
+    address: string;
+    note: string;
 }

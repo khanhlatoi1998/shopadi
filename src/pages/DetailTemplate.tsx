@@ -1,26 +1,69 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Breadcrumb from "../components/breadcrumb";
 
 import productApi from '../api/productsApi';
-
-import Product from "../components/products/Product";
 import { useParams } from 'react-router-dom';
 import { ProductType } from '../contains/type';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { Formik, FastField, Form } from 'formik';
+
+import RelatedProducts from '../components/related/RelatedProducts';
+import InputRadioFiled from '../components/form/custom-fields/InputRadioFiled';
+import InputFiled from '../components/form/custom-fields/InputNumberField';
+import { addItem } from '../redux/sliderListCart';
+
 const DetailTemplate = () => {
+    const dispatch = useDispatch();
     const params = useParams();
-    const [product, setProduct] = useState<ProductType>();
+    const refColor = useRef<any>(null);
+    const refSize = useRef<any>(null);
+    const [product, setProduct] = useState<ProductType>({
+        _id: '',
+        image: '',
+        subImage: [],
+        name: '',
+        category: '',
+        color_group: [],
+        size_group: [],
+        color: '',
+        size: '',
+        slug: '',
+        price: 0,
+        discount: 0,
+        rating: 0,
+        type: '',
+        like: 0,
+        view: 0,
+        share: 0,
+        comment: [],
+        quantity: 0,
+    });
+
+    const handleActiveCharacteristic = (e: any, ref: any, cls: any) => {
+        const eleInput = ref?.current?.querySelectorAll('label');
+        eleInput.forEach((ele: any) => {
+            ele.classList.remove(cls);
+        })
+        e.target.classList.add(cls)
+    };
+
+    const onSubmit = async (values: ProductType) => {
+        dispatch(addItem(values));
+    };
 
     useEffect(() => {
         productApi.getItem(params.id)
             .then((res: any) => {
                 setProduct(res);
             })
-            .catch((err) => { })
+            .catch((err) => { });
+
     }, []);
+
     return (
         <section>
             <Breadcrumb title="detail" />
@@ -74,38 +117,101 @@ const DetailTemplate = () => {
                             <p className="text-color_01 text-size-4 font-medium mt-4">
                                 ${product?.discount != 0 ? product?.discount : product?.price}
                             </p>
-                            <form action="" className="mt-4 flex flex-col gap-4 flex-wrap">
-                                <div>
-                                    <p>Màu: </p>
-                                    <ul className="mt-2 flex gap-4">
-                                        <li className="w-[35px] h-[35px] scale-[1.2] bg-color_01 cursor-pointer"></li>
-                                        <li className="w-[35px] h-[35px] bg-color_01 cursor-pointer"></li>
-                                        <li className="w-[35px] h-[35px] bg-color_01 cursor-pointer"></li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <p>Size: </p>
-                                    <ul className="mt-2 flex gap-4 flex-wrap">
-                                        <li className="w-[35px] h-[35px] border border-solid flex items-center justify-center cursor-pointer">S</li>
-                                        <li className="w-[35px] h-[35px] border border-solid border-color_07 flex items-center justify-center cursor-pointer">XL</li>
-                                    </ul>
-                                </div>
-                                <div className="flex items-center">
-                                    <div className="number-input">
-                                        <button onClick={(e: any) => { e.preventDefault(); e.target.parentNode.querySelector('input[type=number]').stepDown() }} ></button>
-                                        <input className="quantity" min="1" name="quantity" defaultValue="1" type="number" />
-                                        <button onClick={(e: any) => { e.preventDefault(); e.target.parentNode.querySelector('input[type=number]').stepUp() }} className="plus"></button>
-                                    </div>
-                                    <button className="py-2 px-6 ml-4 bg-color_01 rounded-full text-white font-medium">ADD TO CART</button>
-                                </div>
-                            </form>
+                            <Formik
+                                name="form-detailProduct"
+                                enableReinitialize={true} // update state 
+                                initialValues={product} // get value name of input follow initialValues
+                                onSubmit={onSubmit}
+                            >
+                                {formikProps => {
+                                    const { values, errors, touched, isSubmitting } = formikProps;
+                                    return (
+                                        <Form className="mt-4 flex flex-col gap-4 flex-wrap">
+                                            <div>
+                                                <p>Màu: </p>
+                                                <ul ref={refColor} id="block__color" className="mt-2 flex gap-4">
+                                                    {
+                                                        product?.color_group?.map((item, idx) =>
+                                                            <li key={idx}>
+                                                                <FastField
+                                                                    name="color"
+                                                                    type="radio"
+                                                                    className="hidden"
+
+                                                                    item={item}
+                                                                    value={values.color}
+                                                                    component={InputRadioFiled}
+                                                                />
+                                                                <label
+                                                                    style={{ backgroundColor: `${item.hex}` }}
+                                                                    onClick={(e) => handleActiveCharacteristic(e, refColor, 'scale-[1.2]')}
+                                                                    htmlFor={item.name}
+                                                                    className={`w-[35px] h-[35px] ${item.active ? 'scale-[1.2]' : ''} block cursor-pointer`}>
+                                                                </label>
+                                                            </li>
+                                                        )
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <p>Size: </p>
+                                                <ul ref={refSize} id="block__color" className="mt-2 flex gap-4">
+                                                    {
+                                                        product?.size_group?.map((item, idx) =>
+                                                            <li key={idx}>
+                                                                <FastField
+                                                                    name="size"
+                                                                    type="radio"
+                                                                    className="hidden"
+
+                                                                    item={item}
+                                                                    value={values.size}
+                                                                    component={InputRadioFiled}
+                                                                />
+                                                                <label
+                                                                    onClick={(e) => handleActiveCharacteristic(e, refSize, 'border-[black]')}
+                                                                    htmlFor={item.name}
+                                                                    className={`w-[35px] h-[35px] border border-solid border-color_07 ${item.active ? 'border-[black]' : ''} flex items-center justify-center cursor-pointer`}
+                                                                >
+                                                                    {item.name}
+                                                                </label>
+                                                            </li>
+                                                        )
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <div className="flex items-center">
+                                                <FastField
+                                                    name="quantity"
+                                                    min="1"
+                                                    type="number"
+                                                    className=""
+                                                    value={values.quantity}
+                                                    component={InputFiled}
+                                                >
+                                                </FastField>
+                                                <button type="submit" className="py-2 px-6 ml-4 bg-color_01 rounded-full text-white font-medium">ADD TO CART</button>
+                                            </div>
+                                        </Form>
+                                    )
+                                }}
+                            </Formik>
                         </div>
                         <div className="text-white text-size-0 mt-6">
                             <button className="bg-[#1877f2] py-[2px] px-2 rounded"><i className="fa-solid fa-thumbs-up"></i> Like {product?.like}</button>
                             <button className="bg-[#1d9bf0] py-[2px] pl-3 pr-2 ml-6 rounded-l-full rounded-r"><i className="ti-twitter"></i> twitter</button>
                             <button className="bg-[#fe6d4c] py-[2px] px-2 rounded"><i className="fa-solid fa-plus"></i> Share</button>
                         </div>
-                        <p className="mt-4 opacity-80">INtro</p>
+                        <p className="mt-4 opacity-80">Processor Qualcomm® MSM 7201A™ 528 MHz
+                            Windows Mobile® 6.1 Professional Operating System
+                            Memory: 512 MB ROM, 288 MB RAM
+                            Dimensions: 115 mm x 62.8 mm x 12 mm / 146.4 grams
+                            3.8-inch TFT-LCD flat touch-sensitive screen with 480 x 800 WVGA resolution
+                            HSDPA/WCDMA: Europe/Asia: 900/2100 MHz; Up to 2 Mbps up-link and 7.2 Mbps down-link speeds
+                            Quad-band GSM/GPRS/EDGE: Europe/Asia: 850/900/1800/1900 MHz (Band frequency, HSUPA availability, and data speed are operator dependent.)
+                            Device Control via HTC TouchFLO™ 3D & Touch-sensitive front panel buttons
+                            GPS and A-GPS ready
+                        </p>
                     </div>
                 </div>
 
@@ -170,44 +276,9 @@ const DetailTemplate = () => {
                     </div>
                 </div>
 
-                <div className="related-product py-12 pb-16">
-                    <h3 className="text-center font-bold text-title">RELATED PRODUCTS</h3>
-                    <div className="mt-6">
-                        <Swiper
-                            slidesPerView={1}
-                            spaceBetween={30}
-                            slidesPerGroup={1}
-                            navigation={true}
-                            breakpoints={{
-                                480: {
-                                    slidesPerView: 2,
-                                },
-                                767: {
-                                    slidesPerView: 3,
-                                },
-                                1200: {
-                                    slidesPerView: 4
-                                }
-                            }}
-                            modules={[Autoplay]}
-                        >
-                            {/* <SwiperSlide>
-                                <Product />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <Product />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <Product />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <Product />
-                            </SwiperSlide> */}
-                        </Swiper>
-                    </div>
-                </div>
+                <RelatedProducts />
             </div>
-        </section>
+        </section >
     );
 };
 

@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { listCart } from './sliderCart';
+import { listCart } from './sliderListCart';
+import { cartItem } from './sliderCartItem';
 import { dataPosts } from './sliderPost';
 
 const rootReducer = {
     dataPosts: dataPosts,
-    listCart: listCart
+    listCart: listCart,
+    cartItem: cartItem
 }
 
 const store = configureStore({
