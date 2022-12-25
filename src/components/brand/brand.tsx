@@ -15,7 +15,7 @@ const Brand: React.FC<Props> = ({
     return (
         <section className="">
             <div className="container__main px-12 md:py-20 py-12">
-                <h1 className="font-bold md:text-title text-title_mb text-center">SHOP BY BRAND</h1>
+                <h1 className="font-bold md:lg:text-title text-size-4 lg:text-title text-size-4_mb text-center">SHOP BY BRAND</h1>
                 <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {
                         dataBrand?.filter((item, idx) => item.isShow === true).splice(0, 3).map((item: BrandType, index) => {    

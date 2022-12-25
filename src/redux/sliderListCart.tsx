@@ -1,7 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ProductType } from "../contains/type";
 
-const initaialStateListCart: Array<ProductType> = [];
+let nameListCartLocalStorage = 'listCart';
+let getListCartLocalStorage: any = localStorage.getItem(nameListCartLocalStorage);
+if (!getListCartLocalStorage) {
+    localStorage.setItem(nameListCartLocalStorage, JSON.stringify([])); // create localStorage
+}
+const parserListCart = JSON.parse(getListCartLocalStorage);
+const initaialStateListCart: Array<ProductType> = parserListCart;
 
 
 const reducerCart = createSlice({
@@ -15,6 +21,7 @@ const reducerCart = createSlice({
                 if (item._id === action.payload._id && item.color === action.payload.color && item.size === action.payload.size)
                     newState.pop();
             })
+            localStorage.setItem(nameListCartLocalStorage, JSON.stringify([...newState])); // update localStorage
             return state = [...newState];
         },
 
@@ -24,6 +31,7 @@ const reducerCart = createSlice({
             if (idx !== -1) {
                 newState.splice(idx, 1);
             }
+            localStorage.setItem(nameListCartLocalStorage, JSON.stringify([...newState])); // update localStorage
             return state = [...newState];
         },
 
@@ -38,6 +46,7 @@ const reducerCart = createSlice({
                     newState.push(item);
                 }
             })
+            localStorage.setItem(nameListCartLocalStorage, JSON.stringify([...newState])); // update localStorage
             return state = [...newState];
         },
     }

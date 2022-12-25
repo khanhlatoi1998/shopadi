@@ -3,16 +3,21 @@ import { ItemType } from '../../contains/type/index';
 
 interface Props {
     item: ItemType;
+    clickCloseMenu: () => void;
 }
 
 
-const NavItem: React.FC<Props> = (props) => {
-    const { item } = props;
-    const { link, label, active, subMenu } = item;
+const NavItem: React.FC<Props> = ({
+    clickCloseMenu,
+    item,
+    item : { link, label, active, subMenu }
+}) => {
+    // const { item } = props;
+    // const { link, label, active, subMenu } = item;
 
     return (
         <li className="relative group cursor-pointer flex flex-wrap items-center justify-contents-between lg:border-0 border-t border-solid border-color_07">
-            <NavLink className={`${active ? 'text-color_01' : ''} flex-1 px-4 py-2 lg:py-8  block font-medium hover:text-color_01`} to={link}>
+            <NavLink onClick={clickCloseMenu} className={`${active ? 'text-color_01' : ''} flex-1 px-4 py-2 lg:py-8  block font-medium hover:text-color_01`} to={link}>
                 {label}
             </NavLink>
             {
@@ -27,7 +32,7 @@ const NavItem: React.FC<Props> = (props) => {
                             subMenu?.map((item, index) => {
                                 return (
                                     <li key={index} className="nav-item relative px-4 flex items-center justify-between  cursor-pointer">
-                                        <NavLink className="block py-1 flex-1" to={item.link}>{item.label}</NavLink>
+                                        <NavLink onClick={clickCloseMenu} className="block py-1 flex-1" to={item.link}>{item.label}</NavLink>
                                         {
                                             item?.icon && <i className={`${item?.icon} itemChild-hover:text-color_01`}></i>
                                         }

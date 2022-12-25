@@ -17,7 +17,6 @@ const Product: React.FC<Props> = ({
     const dispatch = useDispatch();
 
     const addItemToCart = () => {
-        const a: any = [];
         dispatch(addItem(item));
     };
 

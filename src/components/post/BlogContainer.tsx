@@ -17,7 +17,7 @@ const BlogContainer: React.FC<Props> = ({
 
     return (
         <section>
-            <p className="text-title font-bold">BLOG</p>
+            <p className="lg:text-title text-size-4 font-bold">BLOG</p>
             <div>
                 {
                     dataPosts?.data.map((item: PostType) => (

@@ -62,6 +62,9 @@ const Header = () => {
 
     const listCart = useSelector((state: any) => state.listCart);
 
+    const clickCloseMenu = () => {
+        setOpen(false);
+    };
 
     return (
         <section className="">
@@ -106,7 +109,7 @@ const Header = () => {
                                 {
                                     items.map((item, index) => {
                                         return (
-                                            <NavItem key={index} item={item} />
+                                            <NavItem key={index} item={item} clickCloseMenu={clickCloseMenu} />
                                         )
                                     })
                                 }

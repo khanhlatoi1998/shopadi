@@ -12,7 +12,7 @@ import {
 } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-// import HomePage from './pages/HomePage';
+import HomePage from './pages/HomePage';
 import Footer from './components/footer/footer';
 import Header from './components/header/Header';
 // import ProductTemplate from './pages/ProductsTemplate';

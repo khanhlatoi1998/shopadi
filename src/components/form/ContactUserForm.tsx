@@ -1,12 +1,13 @@
 import { FastField, Formik, Form } from "formik";
 import { NavLink } from "react-router-dom";
-import { ContactType } from "../../contains/type";
+import { ContactType, ProductType } from "../../contains/type";
 import InputFiled from "./custom-fields/InputField";
 import TextAreaField from "./custom-fields/TextAreaField";
 import * as yup from 'yup';
 import { useSelector } from "react-redux";
+import orderApi from "../../api/orderApi";
 
-const ContactForm = () => {
+const ContactUserForm = () => {
 
     const listCart = useSelector((state: any) => state.listCart);
     const initialValues = {
@@ -17,8 +18,26 @@ const ContactForm = () => {
     }
 
     const onSubmit = (values: ContactType) => {
-        console.log(values);
-        console.log(listCart);
+        const createDate = new Date();
+        const total = listCart.reduce((total: any, item: ProductType ) => {
+            return {
+                price: total.price + (item.quantity * item.price),
+                item: total.item + item.quantity
+            };
+        }, {price: 0, item: 0});
+
+        const order = {
+            user: values,
+            items: listCart,
+            total_price: total.price,
+            total_item: listCart.length,
+            total_quantity: total.item,
+            createDate: createDate,
+        };
+
+        orderApi.postOrder(order).then((res) => {
+            console.log(res);
+        }).catch((err) => { });
     };
 
     const validationSchema = yup.object().shape({
@@ -80,4 +99,4 @@ const ContactForm = () => {
     );
 };
 
-export default ContactForm;
+export default ContactUserForm;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ortherApi from '../api/ortherApi';
 import postsApi from '../api/postsApi';
@@ -21,7 +21,7 @@ interface Props {
     data: any;
 }
 
-const HomePage: React.FC<Props> = ({
+const HomePage: React.FC<Props> = React.memo(({
     data
 }) => {
     const [sliderPosts, setSliderPosts] = useState<Array<PostType>>([]);
@@ -67,6 +67,6 @@ const HomePage: React.FC<Props> = ({
             <Partners />
         </section>
     );
-};
+});
 
 export default HomePage;

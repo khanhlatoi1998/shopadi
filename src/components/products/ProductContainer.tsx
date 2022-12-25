@@ -21,7 +21,7 @@ const ProductContainer: React.FC<Props> = ({
 
     return (
         <section>
-            <div className="text-title font-bold uppercase">{title}</div>
+            <div className="lg:text-title text-size-4 font-bold uppercase">{title}</div>
             <div className="mt-8">
                 <SortTemplate />
                 {data?.data?.length 

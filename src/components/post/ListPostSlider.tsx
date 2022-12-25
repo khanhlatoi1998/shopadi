@@ -14,7 +14,7 @@ const ListPostSlider: React.FC<Props> = ({
     return (
         <section className="post py-16">
             <div className="container__main">
-                <h1 className="font-bold md:text-title text-title_mb text-center">LATEST POST</h1>
+                <h1 className="font-bold md:lg:text-title text-size-4 lg:text-title text-size-4_mb text-center">LATEST POST</h1>
                 <Swiper
                     slidesPerView={1}
                     slidesPerGroup={1}

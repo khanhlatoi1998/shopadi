@@ -1,6 +1,7 @@
 import { FastField, Form, Formik } from "formik";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { ProductType } from "../../contains/type";
 import { removeItemCart } from "../../redux/sliderListCart";
 import InputNumberFiled from "../form/custom-fields/InputNumberField";
@@ -30,9 +31,9 @@ const CartItem: React.FC<Props> = ({
                 <span onClick={handleRemoveItemCart}>
                     <i className="fa-solid fa-xmark text-[#ff0000ab] cursor-pointer"></i>
                 </span>
-                <div>
+                <NavLink to={`/detail/${item._id}`}>
                     <img className="w-[70px]" src={item.image} alt="" />
-                </div>
+                </NavLink>
 
             </div>
             <Formik
@@ -45,7 +46,7 @@ const CartItem: React.FC<Props> = ({
                     const { values } = formikProps;
                     return (
                         <Form className="flex flex-col gap-4">
-                            <p>{item.name}</p>
+                            <NavLink to={`/detail/${item._id}`}>{item.name}</NavLink>
                             <div className="flex items-center gap-3">
                                 <p>Màu: </p>
                                 {
