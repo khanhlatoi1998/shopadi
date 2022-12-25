@@ -26,6 +26,11 @@ const BlogTemplate: React.FC<Props> = ({
     };
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+
         const params = {
             limit: 3,
             page: 1
@@ -40,7 +45,7 @@ const BlogTemplate: React.FC<Props> = ({
     return (
         <div>
             <Breadcrumb title="blog" />
-            <div className="container__main flex gap-8 py-16">
+            <div className="container__main flex gap-8 pb-16 lg:pt-16 pt-6">
                 <div className="w-[285px] hidden md:block">
                     <div>
                         <Sidebar />

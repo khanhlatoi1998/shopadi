@@ -1,7 +1,7 @@
 const SortTemplate = () => {
     return (
         <div className="py-6 border-y border-solid border-color_07">
-            <div className="flex  flex-wrap items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between">
                 <div className="text-size-1">
                     <span className="text-color_01"><i className="ti-layout-grid3"></i></span>
                     <span className="ml-4"><i className="ti-view-list-alt"></i></span>

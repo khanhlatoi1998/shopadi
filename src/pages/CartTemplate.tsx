@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Breadcrumb from "../components/breadcrumb";
@@ -6,6 +7,13 @@ import ContactUserForm from "../components/form/ContactUserForm";
 
 const CartTemplate = () => {
     const listCart = useSelector((state: any) => state.listCart);
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }, []);
 
     return (
         <section className="section-card">

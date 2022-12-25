@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { Autoplay } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Breadcrumb from "../components/breadcrumb";
 
@@ -56,6 +56,11 @@ const DetailTemplate = () => {
     };
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+
         productApi.getItem(params.id)
             .then((res: any) => {
                 setProduct(res);
@@ -86,7 +91,8 @@ const DetailTemplate = () => {
                                 autoplay={{
                                     delay: 5000
                                 }}
-                            // modules={[Autoplay]}
+                                modules={[Navigation, Pagination]}
+
                             >
                                 {
                                     product?.subImage?.map((item, index) => (

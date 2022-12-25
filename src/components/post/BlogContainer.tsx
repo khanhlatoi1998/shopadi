@@ -18,7 +18,7 @@ const BlogContainer: React.FC<Props> = ({
     return (
         <section>
             <p className="lg:text-title text-size-4 font-bold">BLOG</p>
-            <div>
+            <div className="mt-6 flex flex-col gap-y-10">
                 {
                     dataPosts?.data.map((item: PostType) => (
                         <div key={item.id}>

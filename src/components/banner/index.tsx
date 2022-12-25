@@ -42,7 +42,7 @@ const Banner: React.FC<Props> = ({
                     dataBanner?.map(
                         (item: BannerType, index) =>
                             <SwiperSlide key={index}>
-                                <div className="block top-0  pt-[33.9%]">
+                                <div className="block top-0  lg:pt-[33.9%] pt-[37%]">
                                     <div className="absolute w-full h-full top-0 left-0">
                                         <picture>
                                             <img className="h-full w-full object-fill" src={item.image} alt="" />

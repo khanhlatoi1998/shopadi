@@ -25,7 +25,7 @@ const ProductContainer: React.FC<Props> = ({
             <div className="mt-8">
                 <SortTemplate />
                 {data?.data?.length 
-                    ? <div className="grid grid-cols-3 gap-8 py-8">
+                    ? <div className="grid lg:grid-cols-3 grid-cols-1 sm:grid-cols-2 gap-8 py-8">
                         {
                             data?.data?.map((item: ProductType) => (
                                 <Product key={item._id} item={item} />
@@ -48,13 +48,13 @@ const ProductContainer: React.FC<Props> = ({
                         breakLabel="..."
                         nextLabel=">"
                         previousLabel="<"
-                        className="flex justify-end gap-3 text-sm"
-                        pageLinkClassName="px-4 py-[8px] bg-color_05 hover:bg-color_01 hover:text-white"
+                        className="flex lg:justify-end justify-center lg:gap-3 gap-2 text-sm"
+                        pageLinkClassName="lg:px-4 px-3 py-[8px] bg-color_05 hover:bg-color_01 hover:text-white"
                         activeLinkClassName="!bg-color_01 text-white"
                         previousLinkClassName="px-2 py-1"
                         nextLinkClassName="px-2 py-1"
-                        pageRangeDisplayed={3}
-                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={2}
+                        marginPagesDisplayed={1}
                         pageCount={pageCount}
                         onPageChange={handlePageClick}
                     />

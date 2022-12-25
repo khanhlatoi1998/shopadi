@@ -32,6 +32,11 @@ const ProductTemplate: React.FC<Props> = ({
     };
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+
         const params = {
             page: 1,
             limit: 12
@@ -48,7 +53,7 @@ const ProductTemplate: React.FC<Props> = ({
     return (
         <div className="ProductTemplate">
             <Breadcrumb title={title} />
-            <div className="container__main flex gap-6 py-16">
+            <div className="container__main flex gap-6 pb-16 lg:pt-16 pt-6">
                 <div className="w-[285px] hidden md:block">
                     <div>
                         <Sidebar />

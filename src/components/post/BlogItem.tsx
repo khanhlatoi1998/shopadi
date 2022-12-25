@@ -28,8 +28,8 @@ const BlogItem: React.FC<Props> = ({
                 </div>
             </div>
             <div>
-                <p className="text-text mt-4 pr-4">{item.desc}</p>
-                <button className="mt-4">Read more</button>
+                <p className="text-text mt-3 pr-4">{item.desc}</p>
+                <button className="mt-3">Read more</button>
             </div>
         </NavLink>
     );
