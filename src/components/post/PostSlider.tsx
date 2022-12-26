@@ -11,7 +11,7 @@ const Post: React.FC<Props> = ({
 }) => {
 
     return (
-        <NavLink to={`/blogs`} className="mt-8 border border-solid border-color_07">
+        <NavLink to={`/blogs`} className="mt-8">
             <div className="relative pt-[67%]">
                 <figure className="">
                     <img  className="absolute inset-0 w-full h-full object-fill" src={item.image} alt="" />

@@ -1,8 +1,16 @@
-const Parallax = () => {
+import { Parallax } from 'react-parallax';
+
+const ParallaxWrapper = () => {
     return (
-        <section className="lg:py-20 py-12 bg-[url('../public/images/products/parallax.jpg')] bg-no-repeat">
-            <div className="container__main flex justify-end">
-                <div className="lg:w-[55%] w-full h-full bg-white py-12 px-10">
+        <Parallax
+            // blur={10}
+            bgImage="../images/products/parallax.jpg"
+            bgImageAlt="the cat" 
+            strength={200}
+            bgClassName="object-cover"
+            >
+            <div className="object-fi container__main flex justify-end lg:px-8 lg:py-20 py-8">
+                <div className="lg:w-[55%] w-full h-full bg-white sm:py-12 sm:px-10 py-8 px-4">
                     <div className="">
                         <img className="mx-auto" src="../images/logo.png" alt="" />
                     </div>
@@ -13,8 +21,8 @@ const Parallax = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </Parallax>
     )
 };
 
-export default Parallax;
+export default ParallaxWrapper;

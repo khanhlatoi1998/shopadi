@@ -24,7 +24,7 @@ const Product: React.FC<Props> = ({
         <div className="">
             <div className="overflow-hidden group relative sm:pt-[150%] pt-[120%] cursor-pointer">
                 <figure className="absolute top-0 left-0 right-0 bottom-0 w-full h-full">
-                    <img className="w-full h-full object-fill" src={item?.image} alt="" />
+                    <img className="w-full h-full object-cover" src={item?.image} alt="" />
                 </figure>
                 <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full z-20">
                     <div>

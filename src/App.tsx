@@ -21,6 +21,7 @@ import BlogTemplate from './pages/BlogTemplate';
 import React, { Suspense } from 'react';
 import productApi from './api/productsApi';
 import CartTemplate from './pages/CartTemplate';
+import TopHeader from './components/header/TopHeader';
 
 function App() {
   const HomePage = React.lazy(() => import('./pages/HomePage'));
@@ -51,31 +52,32 @@ function App() {
         </div>
       }>
         <BrowserRouter>
+          <TopHeader />
           <Header />
           <Routes>
             <Route
               path="/"
-              element={<HomePage data={data}/>}
+              element={<HomePage data={data} />}
             />
             <Route
               path="/men"
-              element={<ProductTemplate title="men" category="men" dataProducts={data?.products}/>}
+              element={<ProductTemplate title="men" category="men" dataProducts={data?.products} />}
             />
             <Route
               path="/womens"
-              element={<ProductTemplate title="womens" category="womens" dataProducts={data?.products}/>}
+              element={<ProductTemplate title="womens" category="womens" dataProducts={data?.products} />}
             />
             <Route
               path="/shop"
-              element={<ProductTemplate title="shop" category="shop" dataProducts={data?.products}/>}
+              element={<ProductTemplate title="shop" category="shop" dataProducts={data?.products} />}
             />
             <Route
               path="/office"
-              element={<ProductTemplate title="office wear" category="office" dataProducts={data?.products}/>}
+              element={<ProductTemplate title="office wear" category="office" dataProducts={data?.products} />}
             />
             <Route
               path="/products"
-              element={<ProductTemplate title="products" category="products" dataProducts={data?.products}/>}
+              element={<ProductTemplate title="products" category="products" dataProducts={data?.products} />}
             />
             <Route
               path="/detail/:id"

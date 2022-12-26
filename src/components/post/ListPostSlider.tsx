@@ -37,7 +37,7 @@ const ListPostSlider: React.FC<Props> = ({
                         }
                     }}
                     modules={[Navigation, Autoplay, Pagination]}
-                    className="cursor-pointer"
+                    className="cursor-pointer mt-8"
                 >
                     {
                         sliderPosts && sliderPosts?.map((item: PostType) => (
