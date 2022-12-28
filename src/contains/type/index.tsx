@@ -50,7 +50,7 @@ export interface PostType {
     desc: string;
     slug: string;
     comment: Array<any>;
-    view: number;
+    review: number;
     share: number;
     createDate: string;
 }

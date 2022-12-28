@@ -15,12 +15,14 @@ import RelatedProducts from '../components/related/RelatedProducts';
 import InputRadioFiled from '../components/form/custom-fields/InputRadioFiled';
 import InputFiled from '../components/form/custom-fields/InputNumberField';
 import { addItem } from '../redux/sliderListCart';
+import { hiddenPopupAdded } from '../redux/sliderPopup';
 
 const DetailTemplate = () => {
     const dispatch = useDispatch();
     const params = useParams();
     const refColor = useRef<any>(null);
     const refSize = useRef<any>(null);
+    const [listRelateProduct, setListRalateProduct] = useState<Array<ProductType>>([]);
     const [product, setProduct] = useState<ProductType>({
         _id: '',
         image: '',
@@ -53,6 +55,10 @@ const DetailTemplate = () => {
 
     const onSubmit = async (values: ProductType) => {
         dispatch(addItem(values));
+        dispatch(hiddenPopupAdded(true));
+        setTimeout(() => {
+            dispatch(hiddenPopupAdded(false));
+        }, 2000);
     };
 
     useEffect(() => {
@@ -64,6 +70,15 @@ const DetailTemplate = () => {
         productApi.getItem(params.id)
             .then((res: any) => {
                 setProduct(res);
+                const category = res.category;
+
+                console.log(category);
+                productApi.getCategoryItems(category)
+                    .then((res: any) => {
+                        console.log(res.data);
+                        setListRalateProduct(res.data);
+                    })
+                    .catch((err) => { })
             })
             .catch((err) => { });
 
@@ -223,7 +238,7 @@ const DetailTemplate = () => {
 
                 <div>
                     <div className="text-size-1 border-b border-solid border-color_07 cursor-pointer">
-                        <p className="hover:text-color_01 px-5 py-1 border-b border-solid border-color_01 inline-block">DESCRIPTION</p>
+                        {/* <p className="hover:text-color_01 px-5 py-1 border-b border-solid border-color_01 inline-block">DESCRIPTION</p> */}
                         <p className="hover:text-color_01 px-5 py-1 border-b border-solid border-color_01 inline-block">REVIEWS 0</p>
                     </div>
                     {/* <div className="py-5">
@@ -253,7 +268,7 @@ const DetailTemplate = () => {
                         AC Adapter Voltage range/frequency: 100 ~ 240V AC, 50/60 Hz DC output: 5V and 1A
                         Special Features: FM Radio, G-Sensor
                     </div> */}
-                    <div className="py-5 text-text">
+                    <div className="py-5 pb-0 text-text">
                         <p>There are no reviews for this product.</p>
                         <p className="font-bold text-size-1 mt-2">WRITE A REVIEW</p>
                         <form action="">
@@ -282,7 +297,7 @@ const DetailTemplate = () => {
                     </div>
                 </div>
 
-                <RelatedProducts />
+                <RelatedProducts sliderProducts={listRelateProduct}/>
             </div>
         </section >
     );

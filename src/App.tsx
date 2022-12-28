@@ -22,6 +22,7 @@ import React, { Suspense } from 'react';
 import productApi from './api/productsApi';
 import CartTemplate from './pages/CartTemplate';
 import TopHeader from './components/header/TopHeader';
+import PopupAddItem from './components/popup/PopupAddItem';
 
 function App() {
   const HomePage = React.lazy(() => import('./pages/HomePage'));
@@ -54,6 +55,7 @@ function App() {
         <BrowserRouter>
           <TopHeader />
           <Header />
+          <PopupAddItem />
           <Routes>
             <Route
               path="/"

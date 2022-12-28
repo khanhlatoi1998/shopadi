@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import { listCart } from './sliderListCart';
 import { cartItem } from './sliderCartItem';
 import { dataPosts } from './sliderPost';
+import { addedCartItem } from './sliderPopup';
 
 const rootReducer = {
     dataPosts: dataPosts,
     listCart: listCart,
-    cartItem: cartItem
+    cartItem: cartItem,
+    addedCartItem: addedCartItem
 }
 
 const store = configureStore({

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { ProductType } from "../../contains/type";
 import { addItem } from "../../redux/sliderListCart";
+import { hiddenPopupAdded } from "../../redux/sliderPopup";
 
 interface Props {
     item: ProductType;
@@ -18,6 +19,10 @@ const Product: React.FC<Props> = ({
 
     const addItemToCart = () => {
         dispatch(addItem(item));
+        dispatch(hiddenPopupAdded(true));
+        setTimeout(() => {
+            dispatch(hiddenPopupAdded(false));
+        }, 2000);
     };
 
     return (
