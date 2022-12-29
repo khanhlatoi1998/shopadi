@@ -19,30 +19,30 @@ const Header = () => {
             label: 'MEN',
             active: false,
             icon: <i className="fa-regular fa-plus"></i>,
-            subMenu: [
-                { link: '/men/hoodile', label: 'Hoodile' },
-                { link: '/men/shirt', label: 'Hoodile' },
-            ]
+            // subMenu: [
+            //     { link: '/men/hoodile', label: 'Hoodile' },
+            //     { link: '/men/shirt', label: 'Hoodile' },
+            // ]
         },
         {
             link: '/womens',
             label: 'WOMENS',
             active: false,
             icon: <i className="fa-regular fa-plus"></i>,
-            subMenu: [
-                { link: '/womens/preppy', label: 'Preppy style' },
-                { link: '/womens/office', label: 'Office' },
-            ]
+            // subMenu: [
+            //     { link: '/womens/preppy', label: 'Preppy style' },
+            //     { link: '/womens/office', label: 'Office' },
+            // ]
         },
         {
             link: '/shop',
             label: 'SHOP',
             active: false,
             icon: <i className="fa-regular fa-plus"></i>,
-            subMenu: [
-                { link: '/shop/style', label: 'Preppy style' },
-                { link: '/shop/shirt', label: 'Office' },
-            ]
+            // subMenu: [
+            //     { link: '/shop/style', label: 'Preppy style' },
+            //     { link: '/shop/shirt', label: 'Office' },
+            // ]
         },
         {
             link: '/office',
