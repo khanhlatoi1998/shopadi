@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { Autoplay, Navigation, Pagination } from "swiper";
+import SwiperCore, { Autoplay, Navigation, Pagination, Thumbs } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Breadcrumb from "../components/breadcrumb";
+import { EffectCoverflow, type Swiper as SwiperRef } from 'swiper'
 
 import productApi from '../api/productsApi';
 import { useParams } from 'react-router-dom';
@@ -11,17 +11,22 @@ import { ProductType } from '../contains/type';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, FastField, Form } from 'formik';
 
+import Breadcrumb from "../components/breadcrumb";
 import RelatedProducts from '../components/related/RelatedProducts';
 import InputRadioFiled from '../components/form/custom-fields/InputRadioFiled';
 import InputFiled from '../components/form/custom-fields/InputNumberField';
 import { addItem } from '../redux/sliderListCart';
 import { hiddenPopupAdded } from '../redux/sliderPopup';
+import { url } from 'inspector';
 
 const DetailTemplate = () => {
     const dispatch = useDispatch();
     const params = useParams();
     const refColor = useRef<any>(null);
     const refSize = useRef<any>(null);
+    const blockZoomEl = document.getElementsByClassName('zoom-block');
+    const imageZoomEl = document.getElementsByClassName('imageZoom');
+    const [active, setActive] = useState<number | string>(0);
     const [listRelateProduct, setListRalateProduct] = useState<Array<ProductType>>([]);
     const [product, setProduct] = useState<ProductType>({
         _id: '',
@@ -61,6 +66,28 @@ const DetailTemplate = () => {
         }, 2000);
     };
 
+    const handleZoomMousemove = (event: any) => {
+
+        Array.from(imageZoomEl).forEach((el: any, idx: any) => {
+            el.style.opacity = '1';
+            const positonX = event.clientX;
+            const positonY = event.clientY;
+
+            // el.style.backgroundPosition = `-${positonX}px ${positonY}px`;
+            console.log(positonX, positonY)
+            console.log(el.style.left, el.style.top)
+            // console.log(blockZoomEl[idx].getBoundingClientRect().top);
+     
+        });
+    };
+
+    const handleZoomMouseout = (event: any) => {
+        Array.from(imageZoomEl).forEach((el: any, idx: any) => {
+            el.style.opacity = '0';
+        });
+    };
+
+
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -71,30 +98,45 @@ const DetailTemplate = () => {
             .then((res: any) => {
                 setProduct(res);
                 const category = res.category;
-
-                console.log(category);
                 productApi.getCategoryItems(category)
                     .then((res: any) => {
-                        console.log(res.data);
                         setListRalateProduct(res.data);
                     })
                     .catch((err) => { })
             })
             .catch((err) => { });
-
     }, []);
 
     return (
         <section>
             <Breadcrumb title="detail" />
-            <div className="container__main">
+            <div className="container__main" >
                 <div className="py-16 flex flex-wrap gap-8">
                     <div className="md:w-1/2 w-full">
-                        <div className="">
-                            <img className="mx-auto w-full max-w-[400px] md:max-w-[600px] h-[500px] object-cover" src={product?.image} alt="" />
-                        </div>
+                        {
+                            product?.subImage?.map((item, index) => (
+                                <div
+                                    onMouseMove={(e) => handleZoomMousemove(e)}
+                                    onMouseOut={(e) => handleZoomMouseout(e)}
+                                    style={active === index ? {} : { display: 'none' }}
+                                    className="zoom-block relative overflow-hidden"
+                                    key={index}
+                                >
+                                    <img className="mx-auto w-full max-w-[400px] md:max-w-[600px] h-[500px] object-fill" src={item} alt="" />
+                                    <div
+                                        style={active === index ? {backgroundImage: `url(${item})`} : { display: 'none' }}
+                                        className={`imageZoom w-full h-full bg-no-repeat bg-cover`}
+                                        // src="../images/logo.png" alt=""
+                                    />
+                                </div>
+                            ))
+                        }
                         <div className="detail-slider mt-6 w-full px-6 relative">
                             <Swiper
+                                onSwiper={(swiper: any) => {
+                                    // setActiveThumbs(swiper)
+                                }}
+                                loop={true}
                                 slidesPerView={3}
                                 spaceBetween={10}
                                 navigation={true}
@@ -103,17 +145,13 @@ const DetailTemplate = () => {
                                         slidesPerView: 4
                                     }
                                 }}
-                                autoplay={{
-                                    delay: 5000
-                                }}
-                                modules={[Navigation, Pagination]}
-
+                                modules={[Navigation, Thumbs]}
                             >
                                 {
                                     product?.subImage?.map((item, index) => (
                                         <SwiperSlide key={index}>
-                                            <div>
-                                                <img className="min-h-[150px] w-full object-cover" src={item} alt="" />
+                                            <div onClick={() => setActive(index)}>
+                                                <img className="min-h-[150px] w-full object-fill cursor-pointer" src={item} alt="" />
                                             </div>
                                         </SwiperSlide>
                                     ))
@@ -297,7 +335,7 @@ const DetailTemplate = () => {
                     </div>
                 </div>
 
-                <RelatedProducts sliderProducts={listRelateProduct}/>
+                <RelatedProducts sliderProducts={listRelateProduct} />
             </div>
         </section >
     );
