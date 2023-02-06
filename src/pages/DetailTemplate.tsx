@@ -67,17 +67,23 @@ const DetailTemplate = () => {
     };
 
     const handleZoomMousemove = (event: any) => {
-
         Array.from(imageZoomEl).forEach((el: any, idx: any) => {
+            // create 1 container 1 image main 1 image zoom
+            // confirm deviation between  image main and image zoom 
+            // transform image zoom fit position mouse and image main
             el.style.opacity = '1';
-            const positonX = event.clientX;
-            const positonY = event.clientY;
+            const valueScale = 1.5;
+            const containerEl: any = blockZoomEl[idx];
+            const positonPx = event.clientX - containerEl.getBoundingClientRect().left; // get position mouse in element 
+            const positonX = (positonPx / containerEl.offsetWidth); // convert value position mouse in element to %
+            const positonPy = event.clientY - containerEl.getBoundingClientRect().top;
+            const positonY = (positonPy / containerEl.offsetHeight); 
+            const getDeviationWidth = ((el.offsetWidth * valueScale) - el.offsetWidth) / valueScale / 2; // get space image when scale whith container 
+            const getDeviationHeight = ((el.offsetHeight * valueScale) - el.offsetHeight) / valueScale / 2;
+            const translateX = (- ((positonX * getDeviationWidth) * 2)) + getDeviationWidth ; // transform position of imageZoom 
+            const translateY = (- ((positonY * getDeviationHeight) * 2)) + getDeviationHeight ;
 
-            // el.style.backgroundPosition = `-${positonX}px ${positonY}px`;
-            console.log(positonX, positonY)
-            console.log(el.style.left, el.style.top)
-            // console.log(blockZoomEl[idx].getBoundingClientRect().top);
-     
+            el.style.transform = `scale(1.5) translateX(${translateX}px) translateY(${translateY}px)`;
         });
     };
 
@@ -119,14 +125,14 @@ const DetailTemplate = () => {
                                     onMouseMove={(e) => handleZoomMousemove(e)}
                                     onMouseOut={(e) => handleZoomMouseout(e)}
                                     style={active === index ? {} : { display: 'none' }}
-                                    className="zoom-block relative overflow-hidden"
+                                    className="zoom-block relative overflow-hidden cursor-move"
                                     key={index}
                                 >
                                     <img className="mx-auto w-full max-w-[400px] md:max-w-[600px] h-[500px] object-fill" src={item} alt="" />
-                                    <div
-                                        style={active === index ? {backgroundImage: `url(${item})`} : { display: 'none' }}
+                                    <img
+                                        style={active === index ? { } : { display: 'none' }}
                                         className={`imageZoom w-full h-full bg-no-repeat bg-cover`}
-                                        // src="../images/logo.png" alt=""
+                                    src={item} alt=""
                                     />
                                 </div>
                             ))
