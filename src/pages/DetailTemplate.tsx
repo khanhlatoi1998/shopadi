@@ -83,7 +83,7 @@ const DetailTemplate = () => {
             const translateX = (- ((positonX * getDeviationWidth) * 2)) + getDeviationWidth ; // transform position of imageZoom 
             const translateY = (- ((positonY * getDeviationHeight) * 2)) + getDeviationHeight ;
 
-            el.style.transform = `scale(1.5) translateX(${translateX}px) translateY(${translateY}px)`;
+            el.style.transform = `scale(${valueScale}) translateX(${translateX}px) translateY(${translateY}px)`;
         });
     };
 

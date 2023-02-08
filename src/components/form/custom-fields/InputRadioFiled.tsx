@@ -34,7 +34,7 @@ const InputRadioFiled: React.FC<Props> = ({
                 className={className} 
                 id={item.name}
                 {...field}
-                checked={value === (item.hex ||item.name)}
+                checked={value === (item.hex || item.name)}
                 
                 onChange={(e) => customOnChange(e)}
                 type={type}

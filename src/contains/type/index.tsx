@@ -22,14 +22,38 @@ export interface ProductType {
     slug: string;
     price: number;
     discount: number;
-    rating: number | string;
+    quantity: number;
+    rating?: number | string;
     type?: string;
     like: number;
     view: number;
     share: number;
     comment?: Array<any>;
-    quantity: number;
 }
+
+// export interface ProductType {
+//     _id: string;
+//     product_name: "", 
+//     product_category: "", 
+//     product_slug: "", 
+//     product_price: "", 
+//     product_oldPrice: "", 
+//     product_color: "", 
+//     product_listColor: [],
+//     product_description: "", 
+//     product_image: "",
+//     product_listImage: [],
+//     size: ['S', 'M', 'L', 'X'],
+//     quanlity: 1,
+//     discount: number;
+//     quantity: number;
+//     rating?: number | string;
+//     type?: string;
+//     like: number;
+//     view: number;
+//     share: number;
+//     comment?: Array<any>;
+// }
 
 export interface CartItemType {
     _id: string;
