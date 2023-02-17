@@ -9,7 +9,7 @@ const initialStateCartItem: CartItemType = {
     size: '',
     slug: '',
     price: 0,
-    discount: 0,
+    oldPrice: 0,
     quantity: 0,
 };
 

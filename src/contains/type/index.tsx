@@ -21,7 +21,7 @@ export interface ProductType {
     size?: string;
     slug: string;
     price: number;
-    discount: number;
+    oldPrice: number;
     quantity: number;
     rating?: number | string;
     type?: string;
@@ -45,7 +45,7 @@ export interface ProductType {
 //     product_listImage: [],
 //     size: ['S', 'M', 'L', 'X'],
 //     quanlity: 1,
-//     discount: number;
+//     oldPrice: number;
 //     quantity: number;
 //     rating?: number | string;
 //     type?: string;
@@ -63,7 +63,7 @@ export interface CartItemType {
     size: string;
     slug: string;
     price: number | string;
-    discount: number | string;
+    oldPrice: number | string;
     quantity: number;
 }
 

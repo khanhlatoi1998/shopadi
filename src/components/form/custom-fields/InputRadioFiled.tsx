@@ -32,13 +32,13 @@ const InputRadioFiled: React.FC<Props> = ({
         <div>
             <input
                 className={className} 
-                id={item.name}
+                id={item.name ?? item}
                 {...field}
-                checked={value === (item.hex || item.name)}
+                checked={value === (item.hex || item)}
                 
                 onChange={(e) => customOnChange(e)}
                 type={type}
-                value={item.hex || item.name}
+                value={item.hex || item}
             />
         </div>
     );

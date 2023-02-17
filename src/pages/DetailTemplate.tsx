@@ -40,7 +40,7 @@ const DetailTemplate = () => {
         size: '',
         slug: '',
         price: 0,
-        discount: 0,
+        oldPrice: 0,
         rating: 0,
         type: '',
         like: 0,
@@ -180,7 +180,7 @@ const DetailTemplate = () => {
                                 <a href="/"><span><i className="fa-solid fa-pen mr-1"></i></span>  Write a review</a>
                             </div>
                             <p className="text-color_01 text-size-4 font-medium mt-4">
-                                ${product?.discount != 0 ? product?.discount : product?.price}
+                                ${product?.oldPrice != 0 ? product?.oldPrice : product?.price}
                             </p>
                             <Formik
                                 name="form-detailProduct"
@@ -235,10 +235,10 @@ const DetailTemplate = () => {
                                                                 />
                                                                 <label
                                                                     onClick={(e) => handleActiveCharacteristic(e, refSize, 'border-[black]')}
-                                                                    htmlFor={item.name}
-                                                                    className={`w-[35px] h-[35px] border border-solid border-color_07 ${item.active ? 'border-[black]' : ''} flex items-center justify-center cursor-pointer`}
+                                                                    htmlFor={item}
+                                                                    className={`w-[35px] h-[35px] border border-solid border-color_07 ${idx === 1 ? 'border-[black]' : ''} flex items-center justify-center cursor-pointer`}
                                                                 >
-                                                                    {item.name}
+                                                                    {item.name ?? item}
                                                                 </label>
                                                             </li>
                                                         )
