@@ -4,6 +4,9 @@ import ProductContainer from "../components/products/ProductContainer";
 import Sidebar from "../components/sidebar";
 import { DataProductsType, ProductType } from "../contains/type";
 import productApi from '../api/productsApi';
+
+import { useQuery } from "@tanstack/react-query";
+import { useQueryString } from "contains/hook";
 interface Props {
     title: string;
     dataProducts: Array<ProductType>;
@@ -16,19 +19,25 @@ const ProductTemplate: React.FC<Props> = ({
     category,
 }) => {
 
-    const [data, setData] = useState<DataProductsType>();
+    // const [data, setData] = useState<DataProductsType>();
+    const [_page, setPage] = useState<number | string>(1);
+    const params = {
+        page: _page,
+        limit: 12
+    }
 
     const handlePageClick = (e: any) => {
         console.log(e.selected + 1);
-        const params = {
-            limit: 12,
-            page: e.selected + 1
-        }
-        productApi.getCategoryItems(category, params)
-            .then((res: any) => {
-                setData(res);
-            })
-            .catch((err) => { })
+        setPage(e.selected + 1);
+        // const params = {
+        //     limit: 12,
+        //     page: e.selected + 1
+        // }
+        // productApi.getCategoryItems(category, params)
+        //     .then((res: any) => {
+        //         // setData(res);
+        //     })
+        //     .catch((err) => { })
     };
 
     useEffect(() => {
@@ -37,18 +46,21 @@ const ProductTemplate: React.FC<Props> = ({
             behavior: "smooth",
         });
 
-        const params = {
-            page: 1,
-            limit: 12
-        }
-        productApi.getCategoryItems(category, params)
-            .then((res: any) => {
-                setData(res);
-            })
-            .catch(() => { });
+        // const params = {
+        //     page: 1,
+        //     limit: 12
+        // }
+        // productApi.getCategoryItems(category, params)
+        //     .then((res: any) => {
+        //         setData(res);
+        //     })
+        //     .catch(() => { });
     }, [window.location.href]);
 
-
+    const {data, isLoading} = useQuery({
+        queryKey: ['products', _page], // khi gia tri page thay doi thi queruFn trigger den queryFn va callback fn call API 
+        queryFn: () => productApi.getCategoryItems(category, params)
+    });
 
     return (
         <div className="ProductTemplate">

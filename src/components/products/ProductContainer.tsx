@@ -7,7 +7,7 @@ import productApi from "../../api/productsApi";
 
 interface Props {
     title: string | undefined;
-    data: DataProductsType | undefined;
+    data?: DataProductsType | any;
     handlePageClick: (e: any) => void;
 }
 

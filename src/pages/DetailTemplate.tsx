@@ -77,11 +77,11 @@ const DetailTemplate = () => {
             const positonPx = event.clientX - containerEl.getBoundingClientRect().left; // get position mouse in element 
             const positonX = (positonPx / containerEl.offsetWidth); // convert value position mouse in element to %
             const positonPy = event.clientY - containerEl.getBoundingClientRect().top;
-            const positonY = (positonPy / containerEl.offsetHeight); 
+            const positonY = (positonPy / containerEl.offsetHeight);
             const getDeviationWidth = ((el.offsetWidth * valueScale) - el.offsetWidth) / valueScale / 2; // get space image when scale whith container 
             const getDeviationHeight = ((el.offsetHeight * valueScale) - el.offsetHeight) / valueScale / 2;
-            const translateX = (- ((positonX * getDeviationWidth) * 2)) + getDeviationWidth ; // transform position of imageZoom 
-            const translateY = (- ((positonY * getDeviationHeight) * 2)) + getDeviationHeight ;
+            const translateX = (- ((positonX * getDeviationWidth) * 2)) + getDeviationWidth; // transform position of imageZoom 
+            const translateY = (- ((positonY * getDeviationHeight) * 2)) + getDeviationHeight;
 
             el.style.transform = `scale(${valueScale}) translateX(${translateX}px) translateY(${translateY}px)`;
         });
@@ -130,15 +130,16 @@ const DetailTemplate = () => {
                                 >
                                     <img className="mx-auto w-full max-w-[400px] md:max-w-[600px] h-[500px] object-fill" src={item} alt="" />
                                     <img
-                                        style={active === index ? { } : { display: 'none' }}
+                                        style={active === index ? {} : { display: 'none' }}
                                         className={`imageZoom w-full h-full bg-no-repeat bg-cover`}
-                                    src={item} alt=""
+                                        src={item} alt=""
                                     />
                                 </div>
                             ))
                         }
                         <div className="detail-slider mt-6 w-full px-6 relative">
                             <Swiper
+                                className="h-[180px]"
                                 onSwiper={(swiper: any) => {
                                     // setActiveThumbs(swiper)
                                 }}
@@ -156,8 +157,8 @@ const DetailTemplate = () => {
                                 {
                                     product?.subImage?.map((item, index) => (
                                         <SwiperSlide key={index}>
-                                            <div onClick={() => setActive(index)}>
-                                                <img className="min-h-[150px] w-full object-fill cursor-pointer" src={item} alt="" />
+                                            <div className="h-[100%]" onClick={() => setActive(index)}>
+                                                <img className="min-h-[150px] h-[100%] w-full object-fill cursor-pointer" src={item} alt="" />
                                             </div>
                                         </SwiperSlide>
                                     ))
@@ -236,7 +237,7 @@ const DetailTemplate = () => {
                                                                 <label
                                                                     onClick={(e) => handleActiveCharacteristic(e, refSize, 'border-[black]')}
                                                                     htmlFor={item}
-                                                                    className={`w-[35px] h-[35px] border border-solid border-color_07 ${idx === 1 ? 'border-[black]' : ''} flex items-center justify-center cursor-pointer`}
+                                                                    className={`w-[35px] h-[35px] border border-solid border-color_07 ${idx === 0 ? 'border-[black]' : ''} flex items-center justify-center cursor-pointer`}
                                                                 >
                                                                     {item.name ?? item}
                                                                 </label>

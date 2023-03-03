@@ -35,7 +35,7 @@ const Product: React.FC<Props> = ({
                     <div>
                         <NavLink to={`/detail/${item?._id}`}>
                             <figure className="group-hover:w-full group-hover:h-full duration-500 absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] right-0 bottom-0 w-[0] h-[80%]">
-                                <img className="w-full h-full object-fill" src={item?.subImage ? item?.subImage[0] : item?.image} alt="" />
+                                <img className="w-full h-full object-fill" src={item?.subImage ? item?.subImage[1] : item?.image} alt="" />
                             </figure>
                         </NavLink>
                         <div className="group-hover:translate-x-[-15px] group-hover:opacity-100 duration-300 absolute top-4 right-[0] translate-x-[110%] z-30 text-[17px] opacity-0 bg-white border border-solid border-color_07">

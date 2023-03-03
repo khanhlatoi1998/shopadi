@@ -1,5 +1,6 @@
 import axiosClient from "./axiosApi";
 import queryString from 'query-string';
+import { DataProductsType } from "contains/type";
 
 const productApi = {
     getAll: (params?: object) => {
@@ -16,7 +17,7 @@ const productApi = {
     },
     getCategoryItems: (category: string, params?: object) => {
         let url = `/products/category/${category}`;
-        return axiosClient.get(url, { params });
+        return axiosClient.get<DataProductsType>(url, { params });
     }
 };
 
